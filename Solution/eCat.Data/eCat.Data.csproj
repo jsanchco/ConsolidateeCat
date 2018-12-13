@@ -1,0 +1,358 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{12242389-B4F0-4817-ABA6-98F61DDAD17B}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>eCat.Data</RootNamespace>
+    <AssemblyName>eCat.Data</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Entities\Aplicacione.cs" />
+    <Compile Include="Entities\AuditoriaBusqueda.cs" />
+    <Compile Include="Entities\AuditoriaBusquedaGeneral.cs" />
+    <Compile Include="Entities\AuditoriaBusquedasSinUsuario.cs" />
+    <Compile Include="Entities\AuditoriaFichasBase.cs" />
+    <Compile Include="Entities\Biografia.cs" />
+    <Compile Include="Entities\BiografiasBackupProduccion20160420.cs" />
+    <Compile Include="Entities\BookmasterBisac.cs" />
+    <Compile Include="Entities\ClasificacionEci.cs" />
+    <Compile Include="Entities\CodigoCdu.cs" />
+    <Compile Include="Entities\CoEditoriale.cs" />
+    <Compile Include="Entities\Consulta.cs" />
+    <Compile Include="Entities\Consultassql.cs" />
+    <Compile Include="Entities\DescargasFichero.cs" />
+    <Compile Include="Entities\DilveCicloEducativoAnele.cs" />
+    <Compile Include="Entities\DilveClasificacionBicEquivalenciasSchemeIdentifier.cs" />
+    <Compile Include="Entities\DilveComunidadAutonoma.cs" />
+    <Compile Include="Entities\DilveCursoAnele.cs" />
+    <Compile Include="Entities\DilveDetallePresentacionProducto.cs" />
+    <Compile Include="Entities\DilveDisponibilidad.cs" />
+    <Compile Include="Entities\DilveDrm.cs" />
+    <Compile Include="Entities\DilveEditoriale.cs" />
+    <Compile Include="Entities\DilveEstado.cs" />
+    <Compile Include="Entities\DilveFormatoProducto.cs" />
+    <Compile Include="Entities\DilveFormatoProductoDetallePresentacionEquivalencia.cs" />
+    <Compile Include="Entities\DilveFormatoSoporteDigital.cs" />
+    <Compile Include="Entities\DilveIdioma.cs" />
+    <Compile Include="Entities\DilveMateria.cs" />
+    <Compile Include="Entities\DilveMaterialEducativoAnele.cs" />
+    <Compile Include="Entities\DilveNivelEducativoAnele.cs" />
+    <Compile Include="Entities\DilvePais.cs" />
+    <Compile Include="Entities\DilvePublicoObjetivo.cs" />
+    <Compile Include="Entities\DilveRole.cs" />
+    <Compile Include="Entities\DilveSituacionCatalogoEditorial.cs" />
+    <Compile Include="Entities\DilveTerritorio.cs" />
+    <Compile Include="Entities\Documento.cs" />
+    <Compile Include="Entities\Dtproperty.cs" />
+    <Compile Include="Entities\E2AclDominio.cs" />
+    <Compile Include="Entities\E2AclDominiosIdioma.cs" />
+    <Compile Include="Entities\E2AclDominiosJerarquia.cs" />
+    <Compile Include="Entities\E2AclDominiosJerarquiasLineaNegocio.cs" />
+    <Compile Include="Entities\E2AclGrupos.cs" />
+    <Compile Include="Entities\E2AclObjeto.cs" />
+    <Compile Include="Entities\E2AclObjetosIdioma.cs" />
+    <Compile Include="Entities\E2AclRelGruposobjeto.cs" />
+    <Compile Include="Entities\E2AclTiposObjeto.cs" />
+    <Compile Include="Entities\E2CamposConsulta.cs" />
+    <Compile Include="Entities\E2CamposConsultaIdioma.cs" />
+    <Compile Include="Entities\E2CamposRelacione.cs" />
+    <Compile Include="Entities\E2CatalogFieldFilter.cs" />
+    <Compile Include="Entities\E2CatalogFieldFiltersIdioma.cs" />
+    <Compile Include="Entities\E2ClasificacionesGestion.cs" />
+    <Compile Include="Entities\E2Consulta.cs" />
+    <Compile Include="Entities\E2ConsultasAsistente.cs" />
+    <Compile Include="Entities\E2ConsultasAsistenteCampos.cs" />
+    <Compile Include="Entities\E2ConsultasAsistenteFiltro.cs" />
+    <Compile Include="Entities\E2ConsultasFiltro.cs" />
+    <Compile Include="Entities\E2DatosMinimosCampos.cs" />
+    <Compile Include="Entities\E2DatosMinimosJerarquiaCampos.cs" />
+    <Compile Include="Entities\E2DatosMinimosJerarquiaValore.cs" />
+    <Compile Include="Entities\E2DatosMinimosValore.cs" />
+    <Compile Include="Entities\E2EquivalenciaCampos.cs" />
+    <Compile Include="Entities\E2EquivalenciaClasificacione.cs" />
+    <Compile Include="Entities\E2EquivalenciaClasificacionesCondicione.cs" />
+    <Compile Include="Entities\E2FichasBaseComentario.cs" />
+    <Compile Include="Entities\E2FichasBasePalabrasClave.cs" />
+    <Compile Include="Entities\E2FichasBasePremio.cs" />
+    <Compile Include="Entities\E2GeCatalogo.cs" />
+    <Compile Include="Entities\E2GeCatalogosCompartido.cs" />
+    <Compile Include="Entities\E2GePlantillanodo.cs" />
+    <Compile Include="Entities\E2GePlantillanodoIdioma.cs" />
+    <Compile Include="Entities\E2GeRamasarbol.cs" />
+    <Compile Include="Entities\E2GeRamaslibro.cs" />
+    <Compile Include="Entities\E2GeTiponodo.cs" />
+    <Compile Include="Entities\E2GeTiponodoIdioma.cs" />
+    <Compile Include="Entities\E2GruposArticulo.cs" />
+    <Compile Include="Entities\E2GruposArticulosIdioma.cs" />
+    <Compile Include="Entities\E2Lineasproducto.cs" />
+    <Compile Include="Entities\E2LineasproductoIdioma.cs" />
+    <Compile Include="Entities\E2LogEcat.cs" />
+    <Compile Include="Entities\E2Mensaje.cs" />
+    <Compile Include="Entities\E2ParametrosDominio.cs" />
+    <Compile Include="Entities\E2RamasclasifFicha.cs" />
+    <Compile Include="Entities\E2RamasClasificacionesGestion.cs" />
+    <Compile Include="Entities\E2Tiradasedicion.cs" />
+    <Compile Include="Entities\E2VwLibrosListosParaWeb.cs" />
+    <Compile Include="Entities\E2VwMaximaEdicion.cs" />
+    <Compile Include="Entities\E2VwNumeroEdicione.cs" />
+    <Compile Include="Entities\Edade.cs" />
+    <Compile Include="Entities\EdadesIdioma.cs" />
+    <Compile Include="Entities\Editoriale.cs" />
+    <Compile Include="Entities\Efemeride.cs" />
+    <Compile Include="Entities\EfemeridesGrupos.cs" />
+    <Compile Include="Entities\EstadosSap.cs" />
+    <Compile Include="Entities\EstadosSapIdioma.cs" />
+    <Compile Include="Entities\Evento.cs" />
+    <Compile Include="Entities\Fecha.cs" />
+    <Compile Include="Entities\FichasAplicacion.cs" />
+    <Compile Include="Entities\FichasBase.cs" />
+    <Compile Include="Entities\FichasBaseArchivoHistorico.cs" />
+    <Compile Include="Entities\FichasBaseCamposLibre.cs" />
+    <Compile Include="Entities\FichasBaseCicloCurso.cs" />
+    <Compile Include="Entities\FichasBaseClasificacionEci.cs" />
+    <Compile Include="Entities\FichasBaseCodigoCdu.cs" />
+    <Compile Include="Entities\FichasBaseIdiomasSecundario.cs" />
+    <Compile Include="Entities\FichasBaseNavidadMarianista.cs" />
+    <Compile Include="Entities\FichasBaseSoporte.cs" />
+    <Compile Include="Entities\FichasBaseTesauro.cs" />
+    <Compile Include="Entities\Idioma.cs" />
+    <Compile Include="Entities\IdiomasIdioma.cs" />
+    <Compile Include="Entities\LineaNegocio.cs" />
+    <Compile Include="Entities\Medio.cs" />
+    <Compile Include="Entities\PalabrasClave.cs" />
+    <Compile Include="Entities\PalabrasClaveGrupos.cs" />
+    <Compile Include="Entities\Parametro.cs" />
+    <Compile Include="Entities\PeAreasGlobale.cs" />
+    <Compile Include="Entities\PeAreasGlobalesIdioma.cs" />
+    <Compile Include="Entities\PeAreasGlobalesMateria.cs" />
+    <Compile Include="Entities\PeComponente.cs" />
+    <Compile Include="Entities\PeComponentesDestino.cs" />
+    <Compile Include="Entities\PeComponentesDestinosIdioma.cs" />
+    <Compile Include="Entities\PeComponentesDocumento.cs" />
+    <Compile Include="Entities\PeComponentesEstado.cs" />
+    <Compile Include="Entities\PeComponentesEstadosIdioma.cs" />
+    <Compile Include="Entities\PeComponentesFormato.cs" />
+    <Compile Include="Entities\PeComponentesFormatosIdioma.cs" />
+    <Compile Include="Entities\PeComponentesTipos.cs" />
+    <Compile Include="Entities\PeComponentesTiposIdioma.cs" />
+    <Compile Include="Entities\PeComponentesTiposMaterialesGruposArticulo.cs" />
+    <Compile Include="Entities\PeDocumento.cs" />
+    <Compile Include="Entities\PeDocumentosExtensionesPermitida.cs" />
+    <Compile Include="Entities\PeEstructuraEdade.cs" />
+    <Compile Include="Entities\PeEstructuraEdadesNivelesEducativo.cs" />
+    <Compile Include="Entities\PePlanesEditoriale.cs" />
+    <Compile Include="Entities\PePlanesEditorialesDocumento.cs" />
+    <Compile Include="Entities\PePmp.cs" />
+    <Compile Include="Entities\PePmPsDocumento.cs" />
+    <Compile Include="Entities\PeProyecto.cs" />
+    <Compile Include="Entities\PeProyectosAreasGlobalesMateria.cs" />
+    <Compile Include="Entities\PeProyectosDocumento.cs" />
+    <Compile Include="Entities\PeProyectosEstado.cs" />
+    <Compile Include="Entities\PeProyectosEstadosIdioma.cs" />
+    <Compile Include="Entities\PeProyectosMarco.cs" />
+    <Compile Include="Entities\PeProyectosMarcoDocumento.cs" />
+    <Compile Include="Entities\PeProyectosMarcoPreferenciasExplotacion.cs" />
+    <Compile Include="Entities\PeProyectosNivelesEducativo.cs" />
+    <Compile Include="Entities\PeProyectosPreferenciasExplotacion.cs" />
+    <Compile Include="Entities\Persona.cs" />
+    <Compile Include="Entities\PeTitulosPrincipale.cs" />
+    <Compile Include="Entities\PeTitulosPrincipalesComponente.cs" />
+    <Compile Include="Entities\PeTitulosPrincipalesDocumento.cs" />
+    <Compile Include="Entities\PeTitulosPrincipalesEstado.cs" />
+    <Compile Include="Entities\PeTitulosPrincipalesEstadosIdioma.cs" />
+    <Compile Include="Entities\Premio.cs" />
+    <Compile Include="Entities\PremiosIdioma.cs" />
+    <Compile Include="Entities\PublicoObjetivo.cs" />
+    <Compile Include="Entities\PublicoObjetivoIdioma.cs" />
+    <Compile Include="Entities\RelFichasPersona.cs" />
+    <Compile Include="Entities\RelFrasesDescriptiva.cs" />
+    <Compile Include="Entities\Resena.cs" />
+    <Compile Include="Entities\Role.cs" />
+    <Compile Include="Entities\RolesIdioma.cs" />
+    <Compile Include="Entities\SinliAudiencia.cs" />
+    <Compile Include="Entities\SinliCautonoma.cs" />
+    <Compile Include="Entities\SinliE2Encuadernacione.cs" />
+    <Compile Include="Entities\SinliE2Estado.cs" />
+    <Compile Include="Entities\SinliE2Lengua.cs" />
+    <Compile Include="Entities\SinliE2Tiposproducto.cs" />
+    <Compile Include="Entities\SinliEncuadernacione.cs" />
+    <Compile Include="Entities\SinliEstado.cs" />
+    <Compile Include="Entities\SinliLengua.cs" />
+    <Compile Include="Entities\SinliMateria.cs" />
+    <Compile Include="Entities\SinliNiveleslectura.cs" />
+    <Compile Include="Entities\SinliPais.cs" />
+    <Compile Include="Entities\SinliSubmateria.cs" />
+    <Compile Include="Entities\SinliTiposproducto.cs" />
+    <Compile Include="Entities\TAccessToken.cs" />
+    <Compile Include="Entities\TActualizacionesCabecera.cs" />
+    <Compile Include="Entities\TActualizacionesCampos.cs" />
+    <Compile Include="Entities\TActualizacionesCamposIdioma.cs" />
+    <Compile Include="Entities\TActualizacionesDetalle.cs" />
+    <Compile Include="Entities\TActualizacionesEstado.cs" />
+    <Compile Include="Entities\TActualizacionesEstadosIdioma.cs" />
+    <Compile Include="Entities\TActualizacionesEstadosMateriale.cs" />
+    <Compile Include="Entities\TActualizacionesEstadosMaterialesIdioma.cs" />
+    <Compile Include="Entities\TActualizacionesTiposActualizacion.cs" />
+    <Compile Include="Entities\TActualizacionesTiposActualizacionIdioma.cs" />
+    <Compile Include="Entities\TActualizacionesTiposCampo.cs" />
+    <Compile Include="Entities\TAmbitosCesion.cs" />
+    <Compile Include="Entities\TAmbitosCesionEstado.cs" />
+    <Compile Include="Entities\TAmbitosCesionGrupos.cs" />
+    <Compile Include="Entities\TAuditoria.cs" />
+    <Compile Include="Entities\TAyudaCm.cs" />
+    <Compile Include="Entities\TbCamposFicha.cs" />
+    <Compile Include="Entities\TbCamposFichaElemento.cs" />
+    <Compile Include="Entities\TbCamposFichaIdioma.cs" />
+    <Compile Include="Entities\TbCamposNivele.cs" />
+    <Compile Include="Entities\TbCamposOrden.cs" />
+    <Compile Include="Entities\TbCamposOrdenIdioma.cs" />
+    <Compile Include="Entities\TbDilveEquivalencia.cs" />
+    <Compile Include="Entities\TbFichasBaseImagene.cs" />
+    <Compile Include="Entities\TbImagenesTipos.cs" />
+    <Compile Include="Entities\TbImagenesTiposIdioma.cs" />
+    <Compile Include="Entities\TBusquedaGeneralEstado.cs" />
+    <Compile Include="Entities\TBusquedaGeneralEstadosIdioma.cs" />
+    <Compile Include="Entities\TBusquedaGeneralTiposMateriale.cs" />
+    <Compile Include="Entities\TBusquedaGeneralTiposMaterialesIdioma.cs" />
+    <Compile Include="Entities\TCampañas.cs" />
+    <Compile Include="Entities\TCategoriasCiclo.cs" />
+    <Compile Include="Entities\TCategoriasCiclosIdioma.cs" />
+    <Compile Include="Entities\TCodigosErrorDilve.cs" />
+    <Compile Include="Entities\TColeccione.cs" />
+    <Compile Include="Entities\TColeccionesIdioma.cs" />
+    <Compile Include="Entities\TConfiguracionMantenimientosGenericosECat.cs" />
+    <Compile Include="Entities\TDigitalAccesibilidad.cs" />
+    <Compile Include="Entities\TDigitalAccesibilidadIdioma.cs" />
+    <Compile Include="Entities\TDigitalPlataforma.cs" />
+    <Compile Include="Entities\TDigitalPlataformasIdioma.cs" />
+    <Compile Include="Entities\TDrm.cs" />
+    <Compile Include="Entities\TDrmIdioma.cs" />
+    <Compile Include="Entities\TE2GeCatalogosPreciosEspeciale.cs" />
+    <Compile Include="Entities\TE2GeCatalogosPreciosEspecialesCampos.cs" />
+    <Compile Include="Entities\TEdadCurso.cs" />
+    <Compile Include="Entities\TEdadCursoIdioma.cs" />
+    <Compile Include="Entities\TEdicionaPlusVisorParametrizacion.cs" />
+    <Compile Include="Entities\TempUsuariosEncuentrosSm.cs" />
+    <Compile Include="Entities\TEstadosSeguimiento.cs" />
+    <Compile Include="Entities\TEtapasRangoEdad.cs" />
+    <Compile Include="Entities\TEtapasRangoEdadIdioma.cs" />
+    <Compile Include="Entities\TFasesMaterial.cs" />
+    <Compile Include="Entities\TFasesMaterialIdioma.cs" />
+    <Compile Include="Entities\TFichasBaseAmbitosCesion.cs" />
+    <Compile Include="Entities\TFichasBaseAmbitosCesionValore.cs" />
+    <Compile Include="Entities\TFichasBaseDilveXml.cs" />
+    <Compile Include="Entities\TFichasBaseHistoricoEstadoSeguimiento.cs" />
+    <Compile Include="Entities\TFichasBaseHistoricoFase.cs" />
+    <Compile Include="Entities\TFichasBaseMaterialesReferencia.cs" />
+    <Compile Include="Entities\TGenero.cs" />
+    <Compile Include="Entities\TGenerosIdioma.cs" />
+    <Compile Include="Entities\TIdiomasPlataforma.cs" />
+    <Compile Include="Entities\TiposArticulo.cs" />
+    <Compile Include="Entities\TiposArticulosIdioma.cs" />
+    <Compile Include="Entities\TiposDocumento.cs" />
+    <Compile Include="Entities\TiposDocumentosIdioma.cs" />
+    <Compile Include="Entities\TiposEncuadernacion.cs" />
+    <Compile Include="Entities\TiposEncuadernacionIdioma.cs" />
+    <Compile Include="Entities\TiposMedio.cs" />
+    <Compile Include="Entities\TiposMediosIdioma.cs" />
+    <Compile Include="Entities\TitulosAfine.cs" />
+    <Compile Include="Entities\TitulosAnejo.cs" />
+    <Compile Include="Entities\TLineasNegocioCamposLibre.cs" />
+    <Compile Include="Entities\TLineasNegocioCamposLibresValore.cs" />
+    <Compile Include="Entities\TLineasNegocioLineasProducto.cs" />
+    <Compile Include="Entities\TMaterialesReferenciaTipos.cs" />
+    <Compile Include="Entities\TMaterialesreferenciaTiposIdioma.cs" />
+    <Compile Include="Entities\TMercado.cs" />
+    <Compile Include="Entities\TMercadoIdioma.cs" />
+    <Compile Include="Entities\TNegocio.cs" />
+    <Compile Include="Entities\TNegocioIdioma.cs" />
+    <Compile Include="Entities\TNoticiasPrincipal.cs" />
+    <Compile Include="Entities\TOperacionesConsulta.cs" />
+    <Compile Include="Entities\TOperacionesConsultasIdioma.cs" />
+    <Compile Include="Entities\TPersonasReferenciasWeb.cs" />
+    <Compile Include="Entities\TPlanEditorialNivele.cs" />
+    <Compile Include="Entities\TPlanEditorialSubNivele.cs" />
+    <Compile Include="Entities\TPortadasColaImagene.cs" />
+    <Compile Include="Entities\TPortadasEstadosImagene.cs" />
+    <Compile Include="Entities\TPropietario.cs" />
+    <Compile Include="Entities\TPropietarioIdioma.cs" />
+    <Compile Include="Entities\TProyecto.cs" />
+    <Compile Include="Entities\TProyectoSeccion.cs" />
+    <Compile Include="Entities\TProyectosGestion.cs" />
+    <Compile Include="Entities\TProyectosGestionIdioma.cs" />
+    <Compile Include="Entities\TProyectosIdioma.cs" />
+    <Compile Include="Entities\TProyectosProyectoSeccion.cs" />
+    <Compile Include="Entities\TReferenciasWebTipos.cs" />
+    <Compile Include="Entities\TSeries.cs" />
+    <Compile Include="Entities\TSeriesIdioma.cs" />
+    <Compile Include="Entities\TSoporte.cs" />
+    <Compile Include="Entities\TSoportesIdioma.cs" />
+    <Compile Include="Entities\TSubcategoriasMateria.cs" />
+    <Compile Include="Entities\TSubcategoriasMateriasIdioma.cs" />
+    <Compile Include="Entities\TTiposCamposConsulta.cs" />
+    <Compile Include="Entities\TTiposConsulta.cs" />
+    <Compile Include="Entities\TTiposConsultasIdioma.cs" />
+    <Compile Include="Entities\TTiposElemento.cs" />
+    <Compile Include="Entities\TTiposElementosIdioma.cs" />
+    <Compile Include="Entities\TTiposEnvioDilve.cs" />
+    <Compile Include="Entities\TTiposMateriale.cs" />
+    <Compile Include="Entities\TTiposMaterialEducativo.cs" />
+    <Compile Include="Entities\TTiposMaterialEducativoIdioma.cs" />
+    <Compile Include="Entities\TTiposMaterialesGruposArticulo.cs" />
+    <Compile Include="Entities\TTiposMaterialesGruposArticulosPais.cs" />
+    <Compile Include="Entities\TTiposMaterialesGruposArticulosPrefijo.cs" />
+    <Compile Include="Entities\TTiposMaterialesIdioma.cs" />
+    <Compile Include="Entities\TTiposPublicacion.cs" />
+    <Compile Include="Entities\TTiposPublicacionIdioma.cs" />
+    <Compile Include="Entities\TTiposTituloAfin.cs" />
+    <Compile Include="Entities\TTiposTituloAfinIdioma.cs" />
+    <Compile Include="Entities\TUsosComerciale.cs" />
+    <Compile Include="Entities\TUsosComercialesIdioma.cs" />
+    <Compile Include="Entities\TUsuariosImpersonacion.cs" />
+    <Compile Include="Entities\TZonasGeografica.cs" />
+    <Compile Include="Entities\Usuario.cs" />
+    <Compile Include="Entities\VwEdicionaPlusGetTesauro.cs" />
+    <Compile Include="Entities\VwFichasBaseAmbitoCesion.cs" />
+    <Compile Include="Entities\VwLirInformesJerarquiaECat.cs" />
+    <Compile Include="Entities\VwPortada.cs" />
+    <Compile Include="Entities\VwProductosrelacionado.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="VMEntities\VM_PCMFichasBase.cs" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

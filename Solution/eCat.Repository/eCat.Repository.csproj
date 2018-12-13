@@ -1,0 +1,381 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{A878C495-2538-43FB-81F6-534A8C8A82FA}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>eCat.Repository</RootNamespace>
+    <AssemblyName>eCat.Repository</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Common\Context.cs" />
+    <Compile Include="Mapped\AplicacioneConfiguration.cs" />
+    <Compile Include="Mapped\AuditoriaBusquedaConfiguration.cs" />
+    <Compile Include="Mapped\AuditoriaBusquedaGeneralConfiguration.cs" />
+    <Compile Include="Mapped\AuditoriaBusquedasSinUsuarioConfiguration.cs" />
+    <Compile Include="Mapped\AuditoriaFichasBaseConfiguration.cs" />
+    <Compile Include="Mapped\BiografiaConfiguration.cs" />
+    <Compile Include="Mapped\BiografiasBackupProduccion20160420Configuration.cs" />
+    <Compile Include="Mapped\BookmasterBisacConfiguration.cs" />
+    <Compile Include="Mapped\ClasificacionEciConfiguration.cs" />
+    <Compile Include="Mapped\CodigoCduConfiguration.cs" />
+    <Compile Include="Mapped\CoEditorialeConfiguration.cs" />
+    <Compile Include="Mapped\ConsultaConfiguration.cs" />
+    <Compile Include="Mapped\ConsultassqlConfiguration.cs" />
+    <Compile Include="Mapped\DescargasFicheroConfiguration.cs" />
+    <Compile Include="Mapped\DilveCicloEducativoAneleConfiguration.cs" />
+    <Compile Include="Mapped\DilveClasificacionBicEquivalenciasSchemeIdentifierConfiguration.cs" />
+    <Compile Include="Mapped\DilveComunidadAutonomaConfiguration.cs" />
+    <Compile Include="Mapped\DilveCursoAneleConfiguration.cs" />
+    <Compile Include="Mapped\DilveDetallePresentacionProductoConfiguration.cs" />
+    <Compile Include="Mapped\DilveDisponibilidadConfiguration.cs" />
+    <Compile Include="Mapped\DilveDrmConfiguration.cs" />
+    <Compile Include="Mapped\DilveEditorialeConfiguration.cs" />
+    <Compile Include="Mapped\DilveEstadoConfiguration.cs" />
+    <Compile Include="Mapped\DilveFormatoProductoConfiguration.cs" />
+    <Compile Include="Mapped\DilveFormatoProductoDetallePresentacionEquivalenciaConfiguration.cs" />
+    <Compile Include="Mapped\DilveFormatoSoporteDigitalConfiguration.cs" />
+    <Compile Include="Mapped\DilveIdiomaConfiguration.cs" />
+    <Compile Include="Mapped\DilveMateriaConfiguration.cs" />
+    <Compile Include="Mapped\DilveMaterialEducativoAneleConfiguration.cs" />
+    <Compile Include="Mapped\DilveNivelEducativoAneleConfiguration.cs" />
+    <Compile Include="Mapped\DilvePaisConfiguration.cs" />
+    <Compile Include="Mapped\DilvePublicoObjetivoConfiguration.cs" />
+    <Compile Include="Mapped\DilveRoleConfiguration.cs" />
+    <Compile Include="Mapped\DilveSituacionCatalogoEditorialConfiguration.cs" />
+    <Compile Include="Mapped\DilveTerritorioConfiguration.cs" />
+    <Compile Include="Mapped\DocumentoConfiguration.cs" />
+    <Compile Include="Mapped\DtpropertyConfiguration.cs" />
+    <Compile Include="Mapped\E2AclDominioConfiguration.cs" />
+    <Compile Include="Mapped\E2AclDominiosIdiomaConfiguration.cs" />
+    <Compile Include="Mapped\E2AclDominiosJerarquiaConfiguration.cs" />
+    <Compile Include="Mapped\E2AclDominiosJerarquiasLineaNegocioConfiguration.cs" />
+    <Compile Include="Mapped\E2AclGruposConfiguration.cs" />
+    <Compile Include="Mapped\E2AclObjetoConfiguration.cs" />
+    <Compile Include="Mapped\E2AclObjetosIdiomaConfiguration.cs" />
+    <Compile Include="Mapped\E2AclRelGruposobjetoConfiguration.cs" />
+    <Compile Include="Mapped\E2AclTiposObjetoConfiguration.cs" />
+    <Compile Include="Mapped\E2CamposConsultaConfiguration.cs" />
+    <Compile Include="Mapped\E2CamposConsultaIdiomaConfiguration.cs" />
+    <Compile Include="Mapped\E2CamposRelacioneConfiguration.cs" />
+    <Compile Include="Mapped\E2CatalogFieldFilterConfiguration.cs" />
+    <Compile Include="Mapped\E2CatalogFieldFiltersIdiomaConfiguration.cs" />
+    <Compile Include="Mapped\E2ClasificacionesGestionConfiguration.cs" />
+    <Compile Include="Mapped\E2ConsultaConfiguration.cs" />
+    <Compile Include="Mapped\E2ConsultasAsistenteCamposConfiguration.cs" />
+    <Compile Include="Mapped\E2ConsultasAsistenteConfiguration.cs" />
+    <Compile Include="Mapped\E2ConsultasAsistenteFiltroConfiguration.cs" />
+    <Compile Include="Mapped\E2ConsultasFiltroConfiguration.cs" />
+    <Compile Include="Mapped\E2DatosMinimosCamposConfiguration.cs" />
+    <Compile Include="Mapped\E2DatosMinimosJerarquiaCamposConfiguration.cs" />
+    <Compile Include="Mapped\E2DatosMinimosJerarquiaValoreConfiguration.cs" />
+    <Compile Include="Mapped\E2DatosMinimosValoreConfiguration.cs" />
+    <Compile Include="Mapped\E2EquivalenciaCamposConfiguration.cs" />
+    <Compile Include="Mapped\E2EquivalenciaClasificacioneConfiguration.cs" />
+    <Compile Include="Mapped\E2EquivalenciaClasificacionesCondicioneConfiguration.cs" />
+    <Compile Include="Mapped\E2FichasBaseComentarioConfiguration.cs" />
+    <Compile Include="Mapped\E2FichasBasePalabrasClaveConfiguration.cs" />
+    <Compile Include="Mapped\E2FichasBasePremioConfiguration.cs" />
+    <Compile Include="Mapped\E2GeCatalogoConfiguration.cs" />
+    <Compile Include="Mapped\E2GeCatalogosCompartidoConfiguration.cs" />
+    <Compile Include="Mapped\E2GePlantillanodoConfiguration.cs" />
+    <Compile Include="Mapped\E2GePlantillanodoIdiomaConfiguration.cs" />
+    <Compile Include="Mapped\E2GeRamasarbolConfiguration.cs" />
+    <Compile Include="Mapped\E2GeRamaslibroConfiguration.cs" />
+    <Compile Include="Mapped\E2GeTiponodoConfiguration.cs" />
+    <Compile Include="Mapped\E2GeTiponodoIdiomaConfiguration.cs" />
+    <Compile Include="Mapped\E2GruposArticuloConfiguration.cs" />
+    <Compile Include="Mapped\E2GruposArticulosIdiomaConfiguration.cs" />
+    <Compile Include="Mapped\E2LineasproductoConfiguration.cs" />
+    <Compile Include="Mapped\E2LineasproductoIdiomaConfiguration.cs" />
+    <Compile Include="Mapped\E2LogEcatConfiguration.cs" />
+    <Compile Include="Mapped\E2MensajeConfiguration.cs" />
+    <Compile Include="Mapped\E2ParametrosDominioConfiguration.cs" />
+    <Compile Include="Mapped\E2RamasclasifFichaConfiguration.cs" />
+    <Compile Include="Mapped\E2RamasClasificacionesGestionConfiguration.cs" />
+    <Compile Include="Mapped\E2TiradasedicionConfiguration.cs" />
+    <Compile Include="Mapped\E2VwLibrosListosParaWebConfiguration.cs" />
+    <Compile Include="Mapped\E2VwMaximaEdicionConfiguration.cs" />
+    <Compile Include="Mapped\E2VwNumeroEdicioneConfiguration.cs" />
+    <Compile Include="Mapped\EdadeConfiguration.cs" />
+    <Compile Include="Mapped\EdadesIdiomaConfiguration.cs" />
+    <Compile Include="Mapped\EditorialeConfiguration.cs" />
+    <Compile Include="Mapped\EfemerideConfiguration.cs" />
+    <Compile Include="Mapped\EfemeridesGruposConfiguration.cs" />
+    <Compile Include="Mapped\EstadosSapConfiguration.cs" />
+    <Compile Include="Mapped\EstadosSapIdiomaConfiguration.cs" />
+    <Compile Include="Mapped\EventoConfiguration.cs" />
+    <Compile Include="Mapped\FechaConfiguration.cs" />
+    <Compile Include="Mapped\FichasAplicacionConfiguration.cs" />
+    <Compile Include="Mapped\FichasBaseArchivoHistoricoConfiguration.cs" />
+    <Compile Include="Mapped\FichasBaseCamposLibreConfiguration.cs" />
+    <Compile Include="Mapped\FichasBaseCicloCursoConfiguration.cs" />
+    <Compile Include="Mapped\FichasBaseClasificacionEciConfiguration.cs" />
+    <Compile Include="Mapped\FichasBaseCodigoCduConfiguration.cs" />
+    <Compile Include="Mapped\FichasBaseConfiguration.cs" />
+    <Compile Include="Mapped\FichasBaseIdiomasSecundarioConfiguration.cs" />
+    <Compile Include="Mapped\FichasBaseNavidadMarianistaConfiguration.cs" />
+    <Compile Include="Mapped\FichasBaseSoporteConfiguration.cs" />
+    <Compile Include="Mapped\FichasBaseTesauroConfiguration.cs" />
+    <Compile Include="Mapped\IdiomaConfiguration.cs" />
+    <Compile Include="Mapped\IdiomasIdiomaConfiguration.cs" />
+    <Compile Include="Mapped\LineaNegocioConfiguration.cs" />
+    <Compile Include="Mapped\MedioConfiguration.cs" />
+    <Compile Include="Mapped\PalabrasClaveConfiguration.cs" />
+    <Compile Include="Mapped\PalabrasClaveGruposConfiguration.cs" />
+    <Compile Include="Mapped\ParametroConfiguration.cs" />
+    <Compile Include="Mapped\PeAreasGlobaleConfiguration.cs" />
+    <Compile Include="Mapped\PeAreasGlobalesIdiomaConfiguration.cs" />
+    <Compile Include="Mapped\PeAreasGlobalesMateriaConfiguration.cs" />
+    <Compile Include="Mapped\PeComponenteConfiguration.cs" />
+    <Compile Include="Mapped\PeComponentesDestinoConfiguration.cs" />
+    <Compile Include="Mapped\PeComponentesDestinosIdiomaConfiguration.cs" />
+    <Compile Include="Mapped\PeComponentesDocumentoConfiguration.cs" />
+    <Compile Include="Mapped\PeComponentesEstadoConfiguration.cs" />
+    <Compile Include="Mapped\PeComponentesEstadosIdiomaConfiguration.cs" />
+    <Compile Include="Mapped\PeComponentesFormatoConfiguration.cs" />
+    <Compile Include="Mapped\PeComponentesFormatosIdiomaConfiguration.cs" />
+    <Compile Include="Mapped\PeComponentesTiposConfiguration.cs" />
+    <Compile Include="Mapped\PeComponentesTiposIdiomaConfiguration.cs" />
+    <Compile Include="Mapped\PeComponentesTiposMaterialesGruposArticuloConfiguration.cs" />
+    <Compile Include="Mapped\PeDocumentoConfiguration.cs" />
+    <Compile Include="Mapped\PeDocumentosExtensionesPermitidaConfiguration.cs" />
+    <Compile Include="Mapped\PeEstructuraEdadeConfiguration.cs" />
+    <Compile Include="Mapped\PeEstructuraEdadesNivelesEducativoConfiguration.cs" />
+    <Compile Include="Mapped\PePlanesEditorialeConfiguration.cs" />
+    <Compile Include="Mapped\PePlanesEditorialesDocumentoConfiguration.cs" />
+    <Compile Include="Mapped\PePmpConfiguration.cs" />
+    <Compile Include="Mapped\PePmPsDocumentoConfiguration.cs" />
+    <Compile Include="Mapped\PeProyectoConfiguration.cs" />
+    <Compile Include="Mapped\PeProyectosAreasGlobalesMateriaConfiguration.cs" />
+    <Compile Include="Mapped\PeProyectosDocumentoConfiguration.cs" />
+    <Compile Include="Mapped\PeProyectosEstadoConfiguration.cs" />
+    <Compile Include="Mapped\PeProyectosEstadosIdiomaConfiguration.cs" />
+    <Compile Include="Mapped\PeProyectosMarcoConfiguration.cs" />
+    <Compile Include="Mapped\PeProyectosMarcoDocumentoConfiguration.cs" />
+    <Compile Include="Mapped\PeProyectosMarcoPreferenciasExplotacionConfiguration.cs" />
+    <Compile Include="Mapped\PeProyectosNivelesEducativoConfiguration.cs" />
+    <Compile Include="Mapped\PeProyectosPreferenciasExplotacionConfiguration.cs" />
+    <Compile Include="Mapped\PersonaConfiguration.cs" />
+    <Compile Include="Mapped\PeTitulosPrincipaleConfiguration.cs" />
+    <Compile Include="Mapped\PeTitulosPrincipalesComponenteConfiguration.cs" />
+    <Compile Include="Mapped\PeTitulosPrincipalesDocumentoConfiguration.cs" />
+    <Compile Include="Mapped\PeTitulosPrincipalesEstadoConfiguration.cs" />
+    <Compile Include="Mapped\PeTitulosPrincipalesEstadosIdiomaConfiguration.cs" />
+    <Compile Include="Mapped\PremioConfiguration.cs" />
+    <Compile Include="Mapped\PremiosIdiomaConfiguration.cs" />
+    <Compile Include="Mapped\PublicoObjetivoConfiguration.cs" />
+    <Compile Include="Mapped\PublicoObjetivoIdiomaConfiguration.cs" />
+    <Compile Include="Mapped\RelFichasPersonaConfiguration.cs" />
+    <Compile Include="Mapped\RelFrasesDescriptivaConfiguration.cs" />
+    <Compile Include="Mapped\ResenaConfiguration.cs" />
+    <Compile Include="Mapped\RoleConfiguration.cs" />
+    <Compile Include="Mapped\RolesIdiomaConfiguration.cs" />
+    <Compile Include="Mapped\SinliAudienciaConfiguration.cs" />
+    <Compile Include="Mapped\SinliCautonomaConfiguration.cs" />
+    <Compile Include="Mapped\SinliE2EncuadernacioneConfiguration.cs" />
+    <Compile Include="Mapped\SinliE2EstadoConfiguration.cs" />
+    <Compile Include="Mapped\SinliE2LenguaConfiguration.cs" />
+    <Compile Include="Mapped\SinliE2TiposproductoConfiguration.cs" />
+    <Compile Include="Mapped\SinliEncuadernacioneConfiguration.cs" />
+    <Compile Include="Mapped\SinliEstadoConfiguration.cs" />
+    <Compile Include="Mapped\SinliLenguaConfiguration.cs" />
+    <Compile Include="Mapped\SinliMateriaConfiguration.cs" />
+    <Compile Include="Mapped\SinliNiveleslecturaConfiguration.cs" />
+    <Compile Include="Mapped\SinliPaisConfiguration.cs" />
+    <Compile Include="Mapped\SinliSubmateriaConfiguration.cs" />
+    <Compile Include="Mapped\SinliTiposproductoConfiguration.cs" />
+    <Compile Include="Mapped\TAccessTokenConfiguration.cs" />
+    <Compile Include="Mapped\TActualizacionesCabeceraConfiguration.cs" />
+    <Compile Include="Mapped\TActualizacionesCamposConfiguration.cs" />
+    <Compile Include="Mapped\TActualizacionesCamposIdiomaConfiguration.cs" />
+    <Compile Include="Mapped\TActualizacionesDetalleConfiguration.cs" />
+    <Compile Include="Mapped\TActualizacionesEstadoConfiguration.cs" />
+    <Compile Include="Mapped\TActualizacionesEstadosIdiomaConfiguration.cs" />
+    <Compile Include="Mapped\TActualizacionesEstadosMaterialeConfiguration.cs" />
+    <Compile Include="Mapped\TActualizacionesEstadosMaterialesIdiomaConfiguration.cs" />
+    <Compile Include="Mapped\TActualizacionesTiposActualizacionConfiguration.cs" />
+    <Compile Include="Mapped\TActualizacionesTiposActualizacionIdiomaConfiguration.cs" />
+    <Compile Include="Mapped\TActualizacionesTiposCampoConfiguration.cs" />
+    <Compile Include="Mapped\TAmbitosCesionConfiguration.cs" />
+    <Compile Include="Mapped\TAmbitosCesionEstadoConfiguration.cs" />
+    <Compile Include="Mapped\TAmbitosCesionGruposConfiguration.cs" />
+    <Compile Include="Mapped\TAuditoriaConfiguration.cs" />
+    <Compile Include="Mapped\TAyudaCmConfiguration.cs" />
+    <Compile Include="Mapped\TbCamposFichaConfiguration.cs" />
+    <Compile Include="Mapped\TbCamposFichaElementoConfiguration.cs" />
+    <Compile Include="Mapped\TbCamposFichaIdiomaConfiguration.cs" />
+    <Compile Include="Mapped\TbCamposNiveleConfiguration.cs" />
+    <Compile Include="Mapped\TbCamposOrdenConfiguration.cs" />
+    <Compile Include="Mapped\TbCamposOrdenIdiomaConfiguration.cs" />
+    <Compile Include="Mapped\TbDilveEquivalenciaConfiguration.cs" />
+    <Compile Include="Mapped\TbFichasBaseImageneConfiguration.cs" />
+    <Compile Include="Mapped\TbImagenesTiposConfiguration.cs" />
+    <Compile Include="Mapped\TbImagenesTiposIdiomaConfiguration.cs" />
+    <Compile Include="Mapped\TBusquedaGeneralEstadoConfiguration.cs" />
+    <Compile Include="Mapped\TBusquedaGeneralEstadosIdiomaConfiguration.cs" />
+    <Compile Include="Mapped\TBusquedaGeneralTiposMaterialeConfiguration.cs" />
+    <Compile Include="Mapped\TBusquedaGeneralTiposMaterialesIdiomaConfiguration.cs" />
+    <Compile Include="Mapped\TCampañasConfiguration.cs" />
+    <Compile Include="Mapped\TCategoriasCicloConfiguration.cs" />
+    <Compile Include="Mapped\TCategoriasCiclosIdiomaConfiguration.cs" />
+    <Compile Include="Mapped\TCodigosErrorDilveConfiguration.cs" />
+    <Compile Include="Mapped\TColeccioneConfiguration.cs" />
+    <Compile Include="Mapped\TColeccionesIdiomaConfiguration.cs" />
+    <Compile Include="Mapped\TConfiguracionMantenimientosGenericosECatConfiguration.cs" />
+    <Compile Include="Mapped\TDigitalAccesibilidadConfiguration.cs" />
+    <Compile Include="Mapped\TDigitalAccesibilidadIdiomaConfiguration.cs" />
+    <Compile Include="Mapped\TDigitalPlataformaConfiguration.cs" />
+    <Compile Include="Mapped\TDigitalPlataformasIdiomaConfiguration.cs" />
+    <Compile Include="Mapped\TDrmConfiguration.cs" />
+    <Compile Include="Mapped\TDrmIdiomaConfiguration.cs" />
+    <Compile Include="Mapped\TE2GeCatalogosPreciosEspecialeConfiguration.cs" />
+    <Compile Include="Mapped\TE2GeCatalogosPreciosEspecialesCamposConfiguration.cs" />
+    <Compile Include="Mapped\TEdadCursoConfiguration.cs" />
+    <Compile Include="Mapped\TEdadCursoIdiomaConfiguration.cs" />
+    <Compile Include="Mapped\TEdicionaPlusVisorParametrizacionConfiguration.cs" />
+    <Compile Include="Mapped\TempUsuariosEncuentrosSmConfiguration.cs" />
+    <Compile Include="Mapped\TEstadosSeguimientoConfiguration.cs" />
+    <Compile Include="Mapped\TEtapasRangoEdadConfiguration.cs" />
+    <Compile Include="Mapped\TEtapasRangoEdadIdiomaConfiguration.cs" />
+    <Compile Include="Mapped\TFasesMaterialConfiguration.cs" />
+    <Compile Include="Mapped\TFasesMaterialIdiomaConfiguration.cs" />
+    <Compile Include="Mapped\TFichasBaseAmbitosCesionConfiguration.cs" />
+    <Compile Include="Mapped\TFichasBaseAmbitosCesionValoreConfiguration.cs" />
+    <Compile Include="Mapped\TFichasBaseDilveXmlConfiguration.cs" />
+    <Compile Include="Mapped\TFichasBaseHistoricoEstadoSeguimientoConfiguration.cs" />
+    <Compile Include="Mapped\TFichasBaseHistoricoFaseConfiguration.cs" />
+    <Compile Include="Mapped\TFichasBaseMaterialesReferenciaConfiguration.cs" />
+    <Compile Include="Mapped\TGeneroConfiguration.cs" />
+    <Compile Include="Mapped\TGenerosIdiomaConfiguration.cs" />
+    <Compile Include="Mapped\TIdiomasPlataformaConfiguration.cs" />
+    <Compile Include="Mapped\TiposArticuloConfiguration.cs" />
+    <Compile Include="Mapped\TiposArticulosIdiomaConfiguration.cs" />
+    <Compile Include="Mapped\TiposDocumentoConfiguration.cs" />
+    <Compile Include="Mapped\TiposDocumentosIdiomaConfiguration.cs" />
+    <Compile Include="Mapped\TiposEncuadernacionConfiguration.cs" />
+    <Compile Include="Mapped\TiposEncuadernacionIdiomaConfiguration.cs" />
+    <Compile Include="Mapped\TiposMedioConfiguration.cs" />
+    <Compile Include="Mapped\TiposMediosIdiomaConfiguration.cs" />
+    <Compile Include="Mapped\TitulosAfineConfiguration.cs" />
+    <Compile Include="Mapped\TitulosAnejoConfiguration.cs" />
+    <Compile Include="Mapped\TLineasNegocioCamposLibreConfiguration.cs" />
+    <Compile Include="Mapped\TLineasNegocioCamposLibresValoreConfiguration.cs" />
+    <Compile Include="Mapped\TLineasNegocioLineasProductoConfiguration.cs" />
+    <Compile Include="Mapped\TMaterialesReferenciaTiposConfiguration.cs" />
+    <Compile Include="Mapped\TMaterialesreferenciaTiposIdiomaConfiguration.cs" />
+    <Compile Include="Mapped\TMercadoConfiguration.cs" />
+    <Compile Include="Mapped\TMercadoIdiomaConfiguration.cs" />
+    <Compile Include="Mapped\TNegocioConfiguration.cs" />
+    <Compile Include="Mapped\TNegocioIdiomaConfiguration.cs" />
+    <Compile Include="Mapped\TNoticiasPrincipalConfiguration.cs" />
+    <Compile Include="Mapped\TOperacionesConsultaConfiguration.cs" />
+    <Compile Include="Mapped\TOperacionesConsultasIdiomaConfiguration.cs" />
+    <Compile Include="Mapped\TPersonasReferenciasWebConfiguration.cs" />
+    <Compile Include="Mapped\TPlanEditorialNiveleConfiguration.cs" />
+    <Compile Include="Mapped\TPlanEditorialSubNiveleConfiguration.cs" />
+    <Compile Include="Mapped\TPortadasColaImageneConfiguration.cs" />
+    <Compile Include="Mapped\TPortadasEstadosImageneConfiguration.cs" />
+    <Compile Include="Mapped\TPropietarioConfiguration.cs" />
+    <Compile Include="Mapped\TPropietarioIdiomaConfiguration.cs" />
+    <Compile Include="Mapped\TProyectoConfiguration.cs" />
+    <Compile Include="Mapped\TProyectoSeccionConfiguration.cs" />
+    <Compile Include="Mapped\TProyectosGestionConfiguration.cs" />
+    <Compile Include="Mapped\TProyectosGestionIdiomaConfiguration.cs" />
+    <Compile Include="Mapped\TProyectosIdiomaConfiguration.cs" />
+    <Compile Include="Mapped\TProyectosProyectoSeccionConfiguration.cs" />
+    <Compile Include="Mapped\TReferenciasWebTiposConfiguration.cs" />
+    <Compile Include="Mapped\TSeriesConfiguration.cs" />
+    <Compile Include="Mapped\TSeriesIdiomaConfiguration.cs" />
+    <Compile Include="Mapped\TSoporteConfiguration.cs" />
+    <Compile Include="Mapped\TSoportesIdiomaConfiguration.cs" />
+    <Compile Include="Mapped\TSubcategoriasMateriaConfiguration.cs" />
+    <Compile Include="Mapped\TSubcategoriasMateriasIdiomaConfiguration.cs" />
+    <Compile Include="Mapped\TTiposCamposConsultaConfiguration.cs" />
+    <Compile Include="Mapped\TTiposConsultaConfiguration.cs" />
+    <Compile Include="Mapped\TTiposConsultasIdiomaConfiguration.cs" />
+    <Compile Include="Mapped\TTiposElementoConfiguration.cs" />
+    <Compile Include="Mapped\TTiposElementosIdiomaConfiguration.cs" />
+    <Compile Include="Mapped\TTiposEnvioDilveConfiguration.cs" />
+    <Compile Include="Mapped\TTiposMaterialeConfiguration.cs" />
+    <Compile Include="Mapped\TTiposMaterialEducativoConfiguration.cs" />
+    <Compile Include="Mapped\TTiposMaterialEducativoIdiomaConfiguration.cs" />
+    <Compile Include="Mapped\TTiposMaterialesGruposArticuloConfiguration.cs" />
+    <Compile Include="Mapped\TTiposMaterialesGruposArticulosPaisConfiguration.cs" />
+    <Compile Include="Mapped\TTiposMaterialesGruposArticulosPrefijoConfiguration.cs" />
+    <Compile Include="Mapped\TTiposMaterialesIdiomaConfiguration.cs" />
+    <Compile Include="Mapped\TTiposPublicacionConfiguration.cs" />
+    <Compile Include="Mapped\TTiposPublicacionIdiomaConfiguration.cs" />
+    <Compile Include="Mapped\TTiposTituloAfinConfiguration.cs" />
+    <Compile Include="Mapped\TTiposTituloAfinIdiomaConfiguration.cs" />
+    <Compile Include="Mapped\TUsosComercialeConfiguration.cs" />
+    <Compile Include="Mapped\TUsosComercialesIdiomaConfiguration.cs" />
+    <Compile Include="Mapped\TUsuariosImpersonacionConfiguration.cs" />
+    <Compile Include="Mapped\TZonasGeograficaConfiguration.cs" />
+    <Compile Include="Mapped\UsuarioConfiguration.cs" />
+    <Compile Include="Mapped\VwEdicionaPlusGetTesauroConfiguration.cs" />
+    <Compile Include="Mapped\VwFichasBaseAmbitoCesionConfiguration.cs" />
+    <Compile Include="Mapped\VwLirInformesJerarquiaECatConfiguration.cs" />
+    <Compile Include="Mapped\VwPortadaConfiguration.cs" />
+    <Compile Include="Mapped\VwProductosrelacionadoConfiguration.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Common\RepositoryBase.cs" />
+    <Compile Include="RepositoryFichasBase.cs" />
+    <Compile Include="RepositoryIdiomas.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\eCat.Data\eCat.Data.csproj">
+      <Project>{12242389-b4f0-4817-aba6-98f61ddad17b}</Project>
+      <Name>eCat.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\eCat.IRepository\eCat.IRepository.csproj">
+      <Project>{6e7efa91-693b-4837-814a-2dee6f7a2cce}</Project>
+      <Name>eCat.IRepository</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
