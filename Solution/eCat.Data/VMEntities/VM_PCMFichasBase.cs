@@ -51,7 +51,6 @@
             if (!string.IsNullOrEmpty(Rol))
                 Rol = Rol.Substring(0, Rol.Length - 1);
 
-
         }
 
         public string ToCSV()
