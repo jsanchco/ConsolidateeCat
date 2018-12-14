@@ -15,38 +15,32 @@ namespace eCat.TestConsole
 
     public class MigrationToPCM
     {
-        private readonly ServiceFichasBase _fichasBaseService;
-
-        #region Constants
-              
-        private const string _FILE_MIGRATION_ARG = @"..\Migration\MigrationARG.csv";
-        private const int _PAIS_ARG = 4;
-
-        #endregion
+        private readonly ServiceFichasBase _fichasBaseService;        
 
         public MigrationToPCM()
         {
             _fichasBaseService = new ServiceFichasBase(new RepositoryFichasBase());
         }
 
-        public void ProcessARG()
+        public void Process(short country)
         {
-            Console.WriteLine($"Init export to IdPais ({_PAIS_ARG}) ...");
+            var nameFile = $"..\\Migration\\Migration_{country}.csv";
+            Console.WriteLine($"Init export to IdPais ({country}) ...");
 
-            if (File.Exists(_FILE_MIGRATION_ARG))
-                File.Delete(_FILE_MIGRATION_ARG);            
+            if (File.Exists(nameFile))
+                File.Delete(nameFile);            
 
             var linesCSV = new List<string>();
-            var listFichasBaseARG = _fichasBaseService.GetByIdPais(_PAIS_ARG, false).ToList();
+            var listFichasBaseARG = _fichasBaseService.GetByIdPais(country, false).ToList();
             foreach (var fichaBase in listFichasBaseARG)
             {
                 var vm_PCMFichasBase = new VM_PCMFichasBase(fichaBase);
                 linesCSV.Add(vm_PCMFichasBase.ToCSV());
             }
 
-            File.WriteAllLines(_FILE_MIGRATION_ARG, linesCSV);
+            File.WriteAllLines(nameFile, linesCSV);
 
-            Console.WriteLine($"Export {linesCSV.Count} products to IdPais ({_PAIS_ARG})");
+            Console.WriteLine($"Export {linesCSV.Count} products to IdPais ({country})");
         }
     }
 }

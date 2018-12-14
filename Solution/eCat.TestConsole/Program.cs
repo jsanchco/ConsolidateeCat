@@ -11,15 +11,15 @@ namespace eCat.TestConsole
     {
         static void Main()
         {
-            Console.WriteLine("*****************************************");
-            Console.WriteLine("*         Process Migration ARG         *");
-            Console.WriteLine("*****************************************");
+            Console.WriteLine("*************************************");
+            Console.WriteLine("*         Process Migration         *");
+            Console.WriteLine("*************************************");
             Console.WriteLine("");
             Console.WriteLine("Press any key to start ...");
             Console.ReadLine();
 
             var migrationToPCM = new MigrationToPCM();
-            migrationToPCM.ProcessARG();
+            migrationToPCM.Process(4);
 
             Console.WriteLine("");
             Console.WriteLine("Press any key to exit ...");

@@ -37,6 +37,7 @@
             Coeditorial = fichasBase.Coeditorial;
             LenguaPrincipal = fichasBase.Idioma;
 
+            // LenguasSecundarias
             foreach (var item in fichasBase.FichasBaseIdiomasSecundarios)
             {
                 LenguasSecundarias += $"{item.IdIdioma},";
@@ -44,6 +45,7 @@
             if (!string.IsNullOrEmpty(LenguasSecundarias))
                 LenguasSecundarias = LenguasSecundarias.Substring(0, LenguasSecundarias.Length - 1);
 
+            // Rol
             foreach (var item in fichasBase.RelFichasPersonas)
             {
                 Rol += $"{item.IdRol},";
