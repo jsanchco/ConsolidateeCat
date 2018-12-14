@@ -362,6 +362,7 @@
     <Compile Include="Common\RepositoryBase.cs" />
     <Compile Include="RepositoryFichasBase.cs" />
     <Compile Include="RepositoryIdiomas.cs" />
+    <Compile Include="RepositoryTGeneroes.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

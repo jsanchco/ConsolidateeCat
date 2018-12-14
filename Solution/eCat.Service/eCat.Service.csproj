@@ -50,9 +50,11 @@
   <ItemGroup>
     <Compile Include="Interfaces\IServiceFichasBase.cs" />
     <Compile Include="Interfaces\IServiceIdiomas.cs" />
+    <Compile Include="Interfaces\IServiceTGeneroes.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\ServiceFichasBase.cs" />
     <Compile Include="Services\ServiceIdiomas.cs" />
+    <Compile Include="Services\ServiceTGeneroes.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\eCat.Data\eCat.Data.csproj">

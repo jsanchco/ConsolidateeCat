@@ -96,7 +96,7 @@ namespace eCat.Data.VMEntities
                 if (item.IdRol == "AUT")
                     Autor += $"{item.IdPersona},";
             }
-            if (!string.IsNullOrEmpty(Persona))
+            if (!string.IsNullOrEmpty(Autor))
                 Autor = Autor.Substring(0, Autor.Length - 1);
 
             EdadMinima = fichasBase.EdadMinima;

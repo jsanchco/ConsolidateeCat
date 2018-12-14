@@ -12,31 +12,31 @@
 
     #endregion
 
-    public class RepositoryIdiomas : RepositoryBase, IRepositoryIdiomas
+    public class RepositoryTGeneroes : RepositoryBase, IRepositoryTGeneroes
     {
-        public IEnumerable<Idioma> GetAll()
+        public IEnumerable<TGenero> GetAll()
         {
-            return Context.Idiomas;
+            return Context.TGeneroes;
         }
 
-        public Idioma Get(int id)
+        public TGenero Get(byte id)
         {
-            return Context.Idiomas
-                .FirstOrDefault(x => x.IdIdioma == id);
+            return Context.TGeneroes
+                .FirstOrDefault(x => x.IdGenero == id);
         }
 
-        public Idioma SaveIdioma(Idioma idioma)
+        public TGenero SaveTGenero(TGenero tGenero)
         {
             using (var dbContextTransaction = Context.Database.BeginTransaction())
             {
                 try
                 {
-                    Context.Idiomas.AddOrUpdate(idioma);
+                    Context.TGeneroes.AddOrUpdate(tGenero);
                     Context.SaveChanges();
 
                     dbContextTransaction.Commit();
 
-                    return idioma;
+                    return tGenero;
 
                 }
                 catch (Exception ex)
@@ -49,17 +49,17 @@
             }
         }
 
-        public bool DeleteIdioma(int id)
+        public bool DeleteTGenero(byte id)
         {
             using (var dbContextTransaction = Context.Database.BeginTransaction())
             {
                 try
                 {
-                    var idiomaFind = Context.Idiomas.Find(id);
-                    if (idiomaFind == null)
+                    var tGeneroFind = Context.TGeneroes.Find(id);
+                    if (tGeneroFind == null)
                         return false;
 
-                    Context.Idiomas.Remove(idiomaFind);
+                    Context.TGeneroes.Remove(tGeneroFind);
                     Context.SaveChanges();
 
                     dbContextTransaction.Commit();
