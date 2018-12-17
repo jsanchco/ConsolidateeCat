@@ -49,6 +49,24 @@ namespace eCat.Data.VMEntities
         public string DepositoLegal { get; set; }
         public string LineaDeProducto { get; set; }
         public string Soporte { get; set; }
+        public short? TipoMaterialSAP { get; set; }
+        public string GrupoArticulo { get; set; }
+        public byte? UsoComercial { get; set; }
+        public short? Campana { get; set; }
+        public int? Proyecto { get; set; }
+        public int? ProyectoDeGestion { get; set; }
+        public string JerarquiaTotal { get; set; }
+        public string Sinopsis { get; set; }
+        public string Resumen { get; set; }
+        public string Indice { get; set; }
+        public string FraseDescriptivaEspecial_Ninos { get; set; }
+        public string FraseDescriptivaGeneral { get; set; }
+        public string FraseDescriptivaEspecial_Chavales { get; set; }
+        public string Premio { get; set; }
+        public string PremioAno { get; set; }
+        public string PremioComentarios { get; set; }
+        public string PalabraClave { get; set; }
+        public string Valores { get; set; }
 
         public VM_PCMFichasBase()
         {
@@ -165,6 +183,111 @@ namespace eCat.Data.VMEntities
             if (!string.IsNullOrEmpty(Soporte))
                 Soporte = Soporte.Substring(0, Soporte.Length - 1);
 
+            TipoMaterialSAP = fichasBase.IdTipoMaterialSap;
+            GrupoArticulo = fichasBase.CodigoGrupo;
+            UsoComercial = fichasBase.IdUsoComercial;
+            Campana = fichasBase.IdCampaña;
+            Proyecto = fichasBase.IdProyecto;
+            ProyectoDeGestion = fichasBase.IdProyectoGestion;
+
+            // JerarquiaTotal
+            foreach (var item in fichasBase.E2RamasclasifFicha)
+            {
+                JerarquiaTotal += $"{item.IdClasificacion},";
+            }
+            if (!string.IsNullOrEmpty(JerarquiaTotal))
+                JerarquiaTotal = JerarquiaTotal.Substring(0, JerarquiaTotal.Length - 1);
+
+            // Sinopsis
+            foreach (var item in fichasBase.FichasAplicacions)
+            {
+                Sinopsis += $"{item.Sinopsis},";
+            }
+            if (!string.IsNullOrEmpty(Sinopsis))
+                Sinopsis = Sinopsis.Substring(0, Sinopsis.Length - 1);
+
+            // Resumen
+            foreach (var item in fichasBase.FichasAplicacions)
+            {
+                Resumen += $"{item.Resumen},";
+            }
+            if (!string.IsNullOrEmpty(Resumen))
+                Resumen = Resumen.Substring(0, Resumen.Length - 1);
+
+            // Indice
+            foreach (var item in fichasBase.FichasAplicacions)
+            {
+                Indice += $"{item.Indice},";
+            }
+            if (!string.IsNullOrEmpty(Indice))
+                Indice = Indice.Substring(0, Indice.Length - 1);
+
+            // FraseDescriptivaEspecial_Ninos
+            foreach (var item in fichasBase.RelFrasesDescriptivas)
+            {
+                if (item.IdPublicoObjetivo == 0)
+                    FraseDescriptivaEspecial_Ninos += $"{item.FraseDescriptiva},";
+            }
+            if (!string.IsNullOrEmpty(FraseDescriptivaEspecial_Ninos))
+                FraseDescriptivaEspecial_Ninos = FraseDescriptivaEspecial_Ninos.Substring(0, FraseDescriptivaEspecial_Ninos.Length - 1);
+
+            // FraseDescriptivaGeneral
+            foreach (var item in fichasBase.RelFrasesDescriptivas)
+            {
+                if (item.IdPublicoObjetivo == 1)
+                    FraseDescriptivaGeneral += $"{item.FraseDescriptiva},";
+            }
+            if (!string.IsNullOrEmpty(FraseDescriptivaGeneral))
+                FraseDescriptivaGeneral = FraseDescriptivaGeneral.Substring(0, FraseDescriptivaGeneral.Length - 1);
+
+            // FraseDescriptivaEspecial_Chavales
+            foreach (var item in fichasBase.RelFrasesDescriptivas)
+            {
+                if (item.IdPublicoObjetivo == 3)
+                    FraseDescriptivaEspecial_Chavales += $"{item.FraseDescriptiva},";
+            }
+            if (!string.IsNullOrEmpty(FraseDescriptivaEspecial_Chavales))
+                FraseDescriptivaEspecial_Chavales = FraseDescriptivaEspecial_Chavales.Substring(0, FraseDescriptivaEspecial_Chavales.Length - 1);
+
+            // Premio
+            foreach (var item in fichasBase.E2FichasBasePremio)
+            {
+                Premio += $"{item.IdPremio},";
+            }
+            if (!string.IsNullOrEmpty(Premio))
+                Premio = Premio.Substring(0, Premio.Length - 1);
+
+            // PremioAno
+            foreach (var item in fichasBase.E2FichasBasePremio)
+            {
+                PremioAno += $"{item.Anyo},";
+            }
+            if (!string.IsNullOrEmpty(PremioAno))
+                PremioAno = Premio.Substring(0, PremioAno.Length - 1);
+
+            // PremioComentarios
+            foreach (var item in fichasBase.E2FichasBasePremio)
+            {
+                PremioComentarios += $"{item.Comentarios},";
+            }
+            if (!string.IsNullOrEmpty(PremioComentarios))
+                PremioComentarios = Premio.Substring(0, PremioComentarios.Length - 1);
+
+            // PalabraClave
+            foreach (var item in fichasBase.E2FichasBasePalabrasClave)
+            {
+                PalabraClave += $"{item.IdPalabra},";
+            }
+            if (!string.IsNullOrEmpty(PalabraClave))
+                PalabraClave = PalabraClave.Substring(0, PalabraClave.Length - 1);
+
+            // Valores
+            foreach (var item in fichasBase.FichasBaseTesauroes)
+            {
+                Valores += $"{item.IdTesauroLibro},";
+            }
+            if (!string.IsNullOrEmpty(Valores))
+                Valores = PalabraClave.Substring(0, Valores.Length - 1);
         }
 
         public string ToCSV()
@@ -210,6 +333,24 @@ namespace eCat.Data.VMEntities
             lineCSV += $"{DepositoLegal};";
             lineCSV += $"{LineaDeProducto};";
             lineCSV += $"{Soporte};";
+            lineCSV += $"{TipoMaterialSAP};";
+            lineCSV += $"{GrupoArticulo};";
+            lineCSV += $"{UsoComercial};";
+            lineCSV += $"{Campana};";
+            lineCSV += $"{Proyecto};";
+            lineCSV += $"{ProyectoDeGestion};";
+            lineCSV += $"{JerarquiaTotal};";
+            lineCSV += $"{Sinopsis};";
+            lineCSV += $"{Resumen};";
+            lineCSV += $"{Indice};";
+            lineCSV += $"{FraseDescriptivaEspecial_Ninos};";
+            lineCSV += $"{FraseDescriptivaGeneral};";
+            lineCSV += $"{FraseDescriptivaEspecial_Chavales};";
+            lineCSV += $"{Premio};";
+            lineCSV += $"{PremioAno};";
+            lineCSV += $"{PremioComentarios};";
+            lineCSV += $"{PalabraClave};";
+            lineCSV += $"{Valores};";
 
             return lineCSV;
         }

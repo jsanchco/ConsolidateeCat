@@ -25,12 +25,26 @@
                 return Context.FichasBases
                     .Include(x => x.FichasBaseIdiomasSecundarios)
                     .Include(x => x.RelFichasPersonas)
+                    .Include(x => x.FichasBaseSoportes)
+                    .Include(x => x.E2RamasclasifFicha)
+                    .Include(x => x.FichasAplicacions)
+                    .Include(x => x.RelFrasesDescriptivas)
+                    .Include(x => x.E2FichasBasePremio)
+                    .Include(x => x.E2FichasBasePalabrasClave)
+                    .Include(x => x.FichasBaseTesauroes)
                     .Where(x => x.IdPais == idPais);
             }
 
             return Context.FichasBases
                 .Include(x => x.FichasBaseIdiomasSecundarios)
                 .Include(x => x.RelFichasPersonas)
+                .Include(x => x.FichasBaseSoportes)
+                .Include(x => x.E2RamasclasifFicha)
+                .Include(x => x.FichasAplicacions)
+                .Include(x => x.RelFrasesDescriptivas)
+                .Include(x => x.E2FichasBasePremio)
+                .Include(x => x.E2FichasBasePalabrasClave)
+                .Include(x => x.FichasBaseTesauroes)
                 .Where(x => x.IdPais == idPais && x.Baja == false);
         }
 
