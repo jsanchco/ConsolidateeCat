@@ -4,9 +4,10 @@ namespace eCat.Data.VMEntities
     #region Using
 
     using Entities;
+    using System;
 
     #endregion
-    
+
     public class VM_PCMFichasBase
     {
         public string Codigo { get; set; }
@@ -67,6 +68,45 @@ namespace eCat.Data.VMEntities
         public string PremioComentarios { get; set; }
         public string PalabraClave { get; set; }
         public string Valores { get; set; }
+        public string ClasificacionCDU { get; set; }
+        public string ClasificacionBIC { get; set; }
+        public DateTime FechaAltaEnElSistema { get; set; }
+        public DateTime? FechaNecesidadDeInformacion { get; set; }
+        public DateTime? FechaCreacionProyectoPS { get; set; }
+        public DateTime? FechaRecepcionDePrototipos { get; set; }
+        public DateTime? FechaPuestaEnMarchaDeFabricacion { get; set; }
+        public DateTime? FechaFinProcesoInteriores { get; set; }
+        public DateTime? FechaAltaEnLogistica { get; set; }
+        public DateTime? FechaComercializacion { get; set; }
+        public DateTime? FechaDeCreacion { get; set; }
+        public string UsuarioDeCreacion { get; set; }
+        public DateTime? FechaDeModificacion { get; set; }
+        public string UsuarioDeModificacion { get; set; }
+        public DateTime? FechaDePublicacion { get; set; }
+        public string UsuarioDePublicacion { get; set; }
+        public DateTime? FechaDeDespublicacion { get; set; }
+        public string UsuarioDeDespublicacion { get; set; }
+        public DateTime? FechaLibroDisponibleEnWeb { get; set; }
+        public DateTime? FechaLibroDisponibleEnDILVE { get; set; }
+        public string TituloOriginal { get; set; }
+        public string EditorialOriginal { get; set; }
+        public byte? IdiomaOriginal { get; set; }
+        public string TitulosAfines { get; set; }
+        public string MaterialesAnejos { get; set; }
+        public string MaterialesReferencia { get; set; }
+        public string MaterialesAuxiliares { get; set; }
+        public string MaterialesAuxiliaresTipoDeDocumento { get; set; }
+        public string FechaContrato { get; set; }
+        public string EstadoAmbitos { get; set; }
+        public string TerritoriosVenta { get; set; }
+        public string TerritoriosExcluidos { get; set; }
+        public string RestriccionesVenta { get; set; }
+        public string DisponibleVentaDerechos { get; set; }
+        public string Restrictivo { get; set; }
+        public string ComentariosInternos { get; set; }
+        public string MasInformacion { get; set; }
+
+        public int? MarcaPublicado { get; set; }
 
         public VM_PCMFichasBase()
         {
@@ -263,7 +303,7 @@ namespace eCat.Data.VMEntities
                 PremioAno += $"{item.Anyo},";
             }
             if (!string.IsNullOrEmpty(PremioAno))
-                PremioAno = Premio.Substring(0, PremioAno.Length - 1);
+                PremioAno = PremioAno.Substring(0, PremioAno.Length - 1);
 
             // PremioComentarios
             foreach (var item in fichasBase.E2FichasBasePremio)
@@ -271,7 +311,7 @@ namespace eCat.Data.VMEntities
                 PremioComentarios += $"{item.Comentarios},";
             }
             if (!string.IsNullOrEmpty(PremioComentarios))
-                PremioComentarios = Premio.Substring(0, PremioComentarios.Length - 1);
+                PremioComentarios = PremioComentarios.Substring(0, PremioComentarios.Length - 1);
 
             // PalabraClave
             foreach (var item in fichasBase.E2FichasBasePalabrasClave)
@@ -287,7 +327,111 @@ namespace eCat.Data.VMEntities
                 Valores += $"{item.IdTesauroLibro},";
             }
             if (!string.IsNullOrEmpty(Valores))
-                Valores = PalabraClave.Substring(0, Valores.Length - 1);
+                Valores = Valores.Substring(0, Valores.Length - 1);
+
+            // ClasificacionCDU
+            foreach (var item in fichasBase.FichasBaseCodigoCdus)
+            {
+                ClasificacionCDU += $"{item.IdCodigoCdu},";
+            }
+            if (!string.IsNullOrEmpty(ClasificacionCDU))
+                ClasificacionCDU = ClasificacionCDU.Substring(0, ClasificacionCDU.Length - 1);
+
+            // ClasificacionBIC
+            foreach (var item in fichasBase.FichasBaseClasificacionEcis)
+            {
+                ClasificacionBIC += $"{item.IdcLasificacionEci},";
+            }
+            if (!string.IsNullOrEmpty(ClasificacionBIC))
+                ClasificacionBIC = ClasificacionBIC.Substring(0, ClasificacionBIC.Length - 1);
+
+            FechaAltaEnElSistema = fichasBase.FechaCreacion;
+            FechaNecesidadDeInformacion = fichasBase.FechaNecesidadInformacion;
+            FechaCreacionProyectoPS = fichasBase.FechaCreacionProyectoPs;
+            FechaRecepcionDePrototipos = fichasBase.FechaRecepcionPrototipos;
+            FechaPuestaEnMarchaDeFabricacion = fichasBase.FechaPuestaEnMarchaFabricacion;
+            FechaFinProcesoInteriores = fichasBase.FechaFinProcesadoInteriores;
+            FechaAltaEnLogistica = fichasBase.FechaAltaLogistica;
+            FechaComercializacion = fichasBase.FechaDisponibilidadComercial;
+            FechaDeCreacion = fichasBase.FechaCreacion;
+            UsuarioDeCreacion = fichasBase.UsuarioCreacion;
+            FechaDeModificacion = fichasBase.FechaActualizacion;
+            UsuarioDeModificacion = fichasBase.UsuarioActualizacion;
+            FechaDePublicacion = fichasBase.FechaPublicacion;
+            UsuarioDePublicacion = fichasBase.UsuarioPublicacion;
+            FechaDeDespublicacion = fichasBase.FechaRetirada;
+            UsuarioDeDespublicacion = fichasBase.UsuarioRetirada;
+            FechaLibroDisponibleEnWeb = fichasBase.FechaPublicacion;
+            FechaLibroDisponibleEnDILVE = fichasBase.FechaCreacionDilve;
+            TituloOriginal = fichasBase.TituloOriginal;
+            EditorialOriginal = fichasBase.EditorialOriginal;
+            IdiomaOriginal = fichasBase.IdiomaOriginal;
+
+            // TitulosAfines
+            foreach (var item in fichasBase.TitulosAfines)
+            {
+                TitulosAfines += $"{item.IdTipoTituloAfin},";
+            }
+            if (!string.IsNullOrEmpty(TitulosAfines))
+                TitulosAfines = TitulosAfines.Substring(0, TitulosAfines.Length - 1);
+
+            // MaterialesAnejos
+            foreach (var item in fichasBase.TitulosAnejoes)
+            {
+                MaterialesAnejos += $"{item.IdObraAneja},";
+            }
+            if (!string.IsNullOrEmpty(MaterialesAnejos))
+                MaterialesAnejos = MaterialesAnejos.Substring(0, MaterialesAnejos.Length - 1);
+
+            // MaterialesReferencia
+            foreach (var item in fichasBase.TFichasBaseMaterialesReferencias_IdInternoReferencia)
+            {
+                MaterialesReferencia += $"{item.IdInternoReferencia},";
+            }
+            if (!string.IsNullOrEmpty(MaterialesReferencia))
+                MaterialesReferencia = MaterialesReferencia.Substring(0, MaterialesReferencia.Length - 1);
+
+            // MaterialesAuxiliares
+            // MaterialesAuxiliaresTipoDeDocumento
+
+            // FechaContrato
+            // DisponibleVentaDerechos
+            // Restrictivo
+            // MasInformacion
+            foreach (var item in fichasBase.TFichasBaseAmbitosCesions)
+            {
+                FechaContrato += $"{item.Fecha:ddMMyyyy},";
+                DisponibleVentaDerechos += $"{Convert.ToInt16(item.DisponibleVentaDerechos)},";
+                Restrictivo += $"{Convert.ToInt16(item.EsRestrictivo)},";
+                ComentariosInternos += $"{item.ComentariosInternos},";
+                MasInformacion += $"{item.MasInformacion},";
+
+                //ValoresExclusivosPaises
+                foreach (var valor in item.TFichasBaseAmbitosCesionValores)
+                {
+                    TerritoriosVenta += $"{valor.IdAmbitoCesion},";
+                }                
+            }
+            if (!string.IsNullOrEmpty(FechaContrato))
+                FechaContrato = FechaContrato.Substring(0, FechaContrato.Length - 1);
+            if (!string.IsNullOrEmpty(DisponibleVentaDerechos))
+                DisponibleVentaDerechos = DisponibleVentaDerechos.Substring(0, DisponibleVentaDerechos.Length - 1);
+            if (!string.IsNullOrEmpty(TerritoriosVenta))
+                TerritoriosVenta = TerritoriosVenta.Substring(0, TerritoriosVenta.Length - 1);
+
+            // EstadoAmbitos
+            foreach (var item in fichasBase.TFichasBaseAmbitosCesions)
+            {
+                EstadoAmbitos += $"{item.IdEstado},";
+            }
+            if (!string.IsNullOrEmpty(EstadoAmbitos))
+                EstadoAmbitos = EstadoAmbitos.Substring(0, EstadoAmbitos.Length - 1);
+
+            // RestriccionesVenta
+
+            // MarcaPublicado
+            MarcaPublicado = fichasBase.PublicableWeb;
+
         }
 
         public string ToCSV()
@@ -351,6 +495,44 @@ namespace eCat.Data.VMEntities
             lineCSV += $"{PremioComentarios};";
             lineCSV += $"{PalabraClave};";
             lineCSV += $"{Valores};";
+            lineCSV += $"{ClasificacionCDU};";
+            lineCSV += $"{ClasificacionBIC};";
+            lineCSV += $"{FechaAltaEnElSistema:ddMMyyyy};";
+            lineCSV += $"{FechaNecesidadDeInformacion:ddMMyyyy};";
+            lineCSV += $"{FechaCreacionProyectoPS:ddMMyyyy};";
+            lineCSV += $"{FechaRecepcionDePrototipos:ddMMyyyy};";
+            lineCSV += $"{FechaPuestaEnMarchaDeFabricacion:ddMMyyyy};";
+            lineCSV += $"{FechaFinProcesoInteriores:ddMMyyyy};";
+            lineCSV += $"{FechaAltaEnLogistica:ddMMyyyy};";
+            lineCSV += $"{FechaDeCreacion:ddMMyyyy};";
+            lineCSV += $"{UsuarioDeCreacion};";
+            lineCSV += $"{FechaDeModificacion:ddMMyyyy};";
+            lineCSV += $"{UsuarioDeModificacion};";
+            lineCSV += $"{FechaDeModificacion:ddMMyyyy};";
+            lineCSV += $"{UsuarioDePublicacion};";
+            lineCSV += $"{FechaDeDespublicacion:ddMMyyyy};";
+            lineCSV += $"{UsuarioDeDespublicacion};";
+            lineCSV += $"{FechaLibroDisponibleEnWeb:ddMMyyyy};";
+            lineCSV += $"{FechaLibroDisponibleEnDILVE:ddMMyyyy};";
+            lineCSV += $"{TituloOriginal};";
+            lineCSV += $"{EditorialOriginal};";
+            lineCSV += $"{IdiomaOriginal};";
+            lineCSV += $"{TitulosAfines};";
+            lineCSV += $"{MaterialesAnejos};";
+            lineCSV += $"{MaterialesReferencia};";
+            lineCSV += $"{MaterialesAuxiliares};";
+            lineCSV += $"{MaterialesAuxiliaresTipoDeDocumento};";
+            lineCSV += $"{FechaContrato};";
+            lineCSV += $"{EstadoAmbitos};";
+            lineCSV += $"{TerritoriosVenta};";
+            lineCSV += $"{TerritoriosExcluidos};";
+            lineCSV += $"{RestriccionesVenta};";
+            lineCSV += $"{DisponibleVentaDerechos};";
+            lineCSV += $"{Restrictivo};";
+            lineCSV += $"{ComentariosInternos};";
+            lineCSV += $"{MasInformacion};";
+
+            lineCSV += $"{MarcaPublicado};";
 
             return lineCSV;
         }

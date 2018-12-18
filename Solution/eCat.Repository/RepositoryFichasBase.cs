@@ -32,6 +32,14 @@
                     .Include(x => x.E2FichasBasePremio)
                     .Include(x => x.E2FichasBasePalabrasClave)
                     .Include(x => x.FichasBaseTesauroes)
+                    .Include(x => x.FichasBaseCodigoCdus)
+                    .Include(x => x.FichasBaseClasificacionEcis)
+                    .Include(x => x.TitulosAfines)
+                    .Include(x => x.TitulosAnejoes)
+                    .Include(x => x.TFichasBaseMaterialesReferencias_IdInterno)
+                    .Include(x => x.TFichasBaseMaterialesReferencias_IdInternoReferencia)
+                    .Include(x => x.TFichasBaseAmbitosCesions)
+                    .Include(x => x.TFichasBaseAmbitosCesions.Select(y => y.TFichasBaseAmbitosCesionValores))
                     .Where(x => x.IdPais == idPais);
             }
 
@@ -45,6 +53,14 @@
                 .Include(x => x.E2FichasBasePremio)
                 .Include(x => x.E2FichasBasePalabrasClave)
                 .Include(x => x.FichasBaseTesauroes)
+                .Include(x => x.FichasBaseCodigoCdus)
+                .Include(x => x.FichasBaseClasificacionEcis)
+                .Include(x => x.TitulosAfines)
+                .Include(x => x.TitulosAnejoes)
+                .Include(x => x.TFichasBaseMaterialesReferencias_IdInterno)
+                .Include(x => x.TFichasBaseMaterialesReferencias_IdInternoReferencia)
+                .Include(x => x.TFichasBaseAmbitosCesions)
+                .Include(x => x.TFichasBaseAmbitosCesions.Select(y => y.TFichasBaseAmbitosCesionValores))
                 .Where(x => x.IdPais == idPais && x.Baja == false);
         }
 
