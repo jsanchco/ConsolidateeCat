@@ -281,6 +281,7 @@
     <Compile Include="Mapped\TFasesMaterialConfiguration.cs" />
     <Compile Include="Mapped\TFasesMaterialIdiomaConfiguration.cs" />
     <Compile Include="Mapped\TFichasBaseAmbitosCesionConfiguration.cs" />
+    <Compile Include="Mapped\TFichasBaseAmbitosCesionRestriccionConfiguration.cs" />
     <Compile Include="Mapped\TFichasBaseAmbitosCesionValoreConfiguration.cs" />
     <Compile Include="Mapped\TFichasBaseDilveXmlConfiguration.cs" />
     <Compile Include="Mapped\TFichasBaseHistoricoEstadoSeguimientoConfiguration.cs" />

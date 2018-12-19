@@ -245,6 +245,7 @@
         public System.Data.Entity.DbSet<TFasesMaterialIdioma> TFasesMaterialIdiomas { get; set; } // T_FasesMaterial_Idioma
         public System.Data.Entity.DbSet<TFichasBaseAmbitosCesion> TFichasBaseAmbitosCesions { get; set; } // T_FichasBase_AmbitosCesion
         public System.Data.Entity.DbSet<TFichasBaseAmbitosCesionValore> TFichasBaseAmbitosCesionValores { get; set; } // T_FichasBase_AmbitosCesion_Valores
+        public System.Data.Entity.DbSet<TFichasBaseAmbitosCesionRestriccion> TFichasBaseAmbitosCesionRestricciones { get; set; }
         public System.Data.Entity.DbSet<TFichasBaseDilveXml> TFichasBaseDilveXmls { get; set; } // T_FichasBase_DILVE_Xml
         public System.Data.Entity.DbSet<TFichasBaseHistoricoEstadoSeguimiento> TFichasBaseHistoricoEstadoSeguimientoes { get; set; } // T_FichasBase_Historico_EstadoSeguimiento
         public System.Data.Entity.DbSet<TFichasBaseHistoricoFase> TFichasBaseHistoricoFases { get; set; } // T_FichasBase_Historico_Fase
@@ -575,6 +576,7 @@
             modelBuilder.Configurations.Add(new TFasesMaterialIdiomaConfiguration());
             modelBuilder.Configurations.Add(new TFichasBaseAmbitosCesionConfiguration());
             modelBuilder.Configurations.Add(new TFichasBaseAmbitosCesionValoreConfiguration());
+            modelBuilder.Configurations.Add(new TFichasBaseAmbitosCesionRestriccionConfiguration());
             modelBuilder.Configurations.Add(new TFichasBaseDilveXmlConfiguration());
             modelBuilder.Configurations.Add(new TFichasBaseHistoricoEstadoSeguimientoConfiguration());
             modelBuilder.Configurations.Add(new TFichasBaseHistoricoFaseConfiguration());

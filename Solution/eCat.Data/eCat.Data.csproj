@@ -273,6 +273,7 @@
     <Compile Include="Entities\TFasesMaterial.cs" />
     <Compile Include="Entities\TFasesMaterialIdioma.cs" />
     <Compile Include="Entities\TFichasBaseAmbitosCesion.cs" />
+    <Compile Include="Entities\TFichasBaseAmbitosCesionRestriccion.cs" />
     <Compile Include="Entities\TFichasBaseAmbitosCesionValore.cs" />
     <Compile Include="Entities\TFichasBaseDilveXml.cs" />
     <Compile Include="Entities\TFichasBaseHistoricoEstadoSeguimiento.cs" />

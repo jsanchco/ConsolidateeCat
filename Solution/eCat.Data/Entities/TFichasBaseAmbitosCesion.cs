@@ -21,6 +21,7 @@ namespace eCat.Data.Entities
         /// Child TFichasBaseAmbitosCesionValores where [T_FichasBase_AmbitosCesion_Valores].[IdFichasBaseAmbitoCesion] point to this entity (FK_T_FichasBase_AmbitosCesion_Valores_T_FichasBase_AmbitosCesion)
         /// </summary>
         public virtual System.Collections.Generic.ICollection<TFichasBaseAmbitosCesionValore> TFichasBaseAmbitosCesionValores { get; set; } // T_FichasBase_AmbitosCesion_Valores.FK_T_FichasBase_AmbitosCesion_Valores_T_FichasBase_AmbitosCesion
+        public virtual System.Collections.Generic.ICollection<TFichasBaseAmbitosCesionRestriccion> TFichasBaseAmbitosCesionRestricciones { get; set; }
 
         // Foreign keys
 
@@ -39,6 +40,7 @@ namespace eCat.Data.Entities
             EsRestrictivo = false;
             DisponibleVentaDerechos = false;
             TFichasBaseAmbitosCesionValores = new System.Collections.Generic.List<TFichasBaseAmbitosCesionValore>();
+            TFichasBaseAmbitosCesionRestricciones = new System.Collections.Generic.List<TFichasBaseAmbitosCesionRestriccion>();
             TAmbitosCesions = new System.Collections.Generic.List<TAmbitosCesion>();
         }
     }

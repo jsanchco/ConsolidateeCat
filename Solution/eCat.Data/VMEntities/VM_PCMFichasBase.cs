@@ -1,4 +1,7 @@
 ﻿// ReSharper disable InconsistentNaming
+
+using System.Runtime.InteropServices.ComTypes;
+
 namespace eCat.Data.VMEntities
 {
     #region Using
@@ -24,6 +27,7 @@ namespace eCat.Data.VMEntities
         public string Autor { get; set; }
         public byte? EdadMinima { get; set; }
         public byte? ZonaGeografica { get; set; }
+        public string Comercializaciones { get; set; }
         public byte? TipoMaterialEducativo { get; set; }
         public int? Coleccion { get; set; }
         public int? Serie { get; set; }
@@ -41,6 +45,7 @@ namespace eCat.Data.VMEntities
         public decimal? Alto { get; set; }
         public decimal? Ancho { get; set; }
         public decimal? Grosor { get; set; }
+        public decimal? Peso { get; set; }
         public decimal? PrecioSinImpuestos { get; set; }
         public decimal? PrecioConImpuestos { get; set; }
         public decimal? Impuestos { get; set; }
@@ -97,7 +102,7 @@ namespace eCat.Data.VMEntities
         public string MaterialesAuxiliares { get; set; }
         public string MaterialesAuxiliaresTipoDeDocumento { get; set; }
         public string FechaContrato { get; set; }
-        public string EstadoAmbitos { get; set; }
+        public string EstadoContrato { get; set; }
         public string TerritoriosVenta { get; set; }
         public string TerritoriosExcluidos { get; set; }
         public string RestriccionesVenta { get; set; }
@@ -105,6 +110,9 @@ namespace eCat.Data.VMEntities
         public string Restrictivo { get; set; }
         public string ComentariosInternos { get; set; }
         public string MasInformacion { get; set; }
+        public string ImagenCubierta { get; set; }
+        public string TiposDeImagenes { get; set; }
+        public string Visores { get; set; }
 
         public int? MarcaPublicado { get; set; }
 
@@ -115,12 +123,15 @@ namespace eCat.Data.VMEntities
 
         public VM_PCMFichasBase(FichasBase fichasBase)
         {
+            //if (fichasBase.IdInterno == "AR111967")
+            //    Console.WriteLine("Found!!!");
+
             Codigo = fichasBase.IdInterno;
             Pais = fichasBase.IdPais;
             LineaDeNegocio = fichasBase.IdLineaNegocio;
-            TituloeCat = fichasBase.Titulo;
-            TituloDistribuidora = fichasBase.TituloDistribuidora;
-            Subtitulo = fichasBase.Subtitulo;
+            TituloeCat = FormatText(fichasBase.Titulo);
+            TituloDistribuidora = FormatText(fichasBase.TituloDistribuidora);
+            Subtitulo = FormatText(fichasBase.Subtitulo);
             Coeditorial = fichasBase.Coeditorial;
             LenguaPrincipal = fichasBase.Idioma;
 
@@ -159,6 +170,7 @@ namespace eCat.Data.VMEntities
 
             EdadMinima = fichasBase.EdadMinima;
             ZonaGeografica = fichasBase.IdZonaGeografica;
+            Comercializaciones = fichasBase.IdInternoOrigen;
             TipoMaterialEducativo = fichasBase.IdTipoMaterialEducativo;
             Coleccion = fichasBase.IdColeccion;
             Serie = fichasBase.IdSerie;
@@ -176,6 +188,7 @@ namespace eCat.Data.VMEntities
             Alto = fichasBase.Alto;
             Ancho = fichasBase.Ancho;
             Grosor = fichasBase.Grosor;
+            Peso = fichasBase.Peso;
             PrecioSinImpuestos = fichasBase.PrecioSinIvae;
             PrecioConImpuestos = fichasBase.PrecioConIvae;
             Impuestos = fichasBase.IvaPorCiento;
@@ -241,7 +254,7 @@ namespace eCat.Data.VMEntities
             // Sinopsis
             foreach (var item in fichasBase.FichasAplicacions)
             {
-                Sinopsis += $"{item.Sinopsis},";
+                Sinopsis += $"{FormatText(item.Sinopsis)},";
             }
             if (!string.IsNullOrEmpty(Sinopsis))
                 Sinopsis = Sinopsis.Substring(0, Sinopsis.Length - 1);
@@ -249,7 +262,7 @@ namespace eCat.Data.VMEntities
             // Resumen
             foreach (var item in fichasBase.FichasAplicacions)
             {
-                Resumen += $"{item.Resumen},";
+                Resumen += $"{FormatText(item.Resumen)},";
             }
             if (!string.IsNullOrEmpty(Resumen))
                 Resumen = Resumen.Substring(0, Resumen.Length - 1);
@@ -257,7 +270,7 @@ namespace eCat.Data.VMEntities
             // Indice
             foreach (var item in fichasBase.FichasAplicacions)
             {
-                Indice += $"{item.Indice},";
+                Indice += $"{FormatText(item.Indice)},";
             }
             if (!string.IsNullOrEmpty(Indice))
                 Indice = Indice.Substring(0, Indice.Length - 1);
@@ -266,7 +279,7 @@ namespace eCat.Data.VMEntities
             foreach (var item in fichasBase.RelFrasesDescriptivas)
             {
                 if (item.IdPublicoObjetivo == 0)
-                    FraseDescriptivaEspecial_Ninos += $"{item.FraseDescriptiva},";
+                    FraseDescriptivaEspecial_Ninos += $"{FormatText(item.FraseDescriptiva)},";
             }
             if (!string.IsNullOrEmpty(FraseDescriptivaEspecial_Ninos))
                 FraseDescriptivaEspecial_Ninos = FraseDescriptivaEspecial_Ninos.Substring(0, FraseDescriptivaEspecial_Ninos.Length - 1);
@@ -275,7 +288,7 @@ namespace eCat.Data.VMEntities
             foreach (var item in fichasBase.RelFrasesDescriptivas)
             {
                 if (item.IdPublicoObjetivo == 1)
-                    FraseDescriptivaGeneral += $"{item.FraseDescriptiva},";
+                    FraseDescriptivaGeneral += $"{FormatText(item.FraseDescriptiva)},";
             }
             if (!string.IsNullOrEmpty(FraseDescriptivaGeneral))
                 FraseDescriptivaGeneral = FraseDescriptivaGeneral.Substring(0, FraseDescriptivaGeneral.Length - 1);
@@ -284,7 +297,7 @@ namespace eCat.Data.VMEntities
             foreach (var item in fichasBase.RelFrasesDescriptivas)
             {
                 if (item.IdPublicoObjetivo == 3)
-                    FraseDescriptivaEspecial_Chavales += $"{item.FraseDescriptiva},";
+                    FraseDescriptivaEspecial_Chavales += $"{FormatText(item.FraseDescriptiva)},";
             }
             if (!string.IsNullOrEmpty(FraseDescriptivaEspecial_Chavales))
                 FraseDescriptivaEspecial_Chavales = FraseDescriptivaEspecial_Chavales.Substring(0, FraseDescriptivaEspecial_Chavales.Length - 1);
@@ -308,7 +321,7 @@ namespace eCat.Data.VMEntities
             // PremioComentarios
             foreach (var item in fichasBase.E2FichasBasePremio)
             {
-                PremioComentarios += $"{item.Comentarios},";
+                PremioComentarios += $"{FormatText(item.Comentarios)},";
             }
             if (!string.IsNullOrEmpty(PremioComentarios))
                 PremioComentarios = PremioComentarios.Substring(0, PremioComentarios.Length - 1);
@@ -321,7 +334,7 @@ namespace eCat.Data.VMEntities
             if (!string.IsNullOrEmpty(PalabraClave))
                 PalabraClave = PalabraClave.Substring(0, PalabraClave.Length - 1);
 
-            // Valores
+            // Valores (Tesauro)
             foreach (var item in fichasBase.FichasBaseTesauroes)
             {
                 Valores += $"{item.IdTesauroLibro},";
@@ -393,6 +406,16 @@ namespace eCat.Data.VMEntities
 
             // MaterialesAuxiliares
             // MaterialesAuxiliaresTipoDeDocumento
+            foreach (var item in fichasBase.Documentoes)
+            {
+                MaterialesAuxiliares += $"{item.IdDocumento},";
+                if (item.TiposDocumento != null)
+                    MaterialesAuxiliaresTipoDeDocumento += $"{item.TiposDocumento.IdTipoDocumento},";
+            }
+            if (!string.IsNullOrEmpty(MaterialesAuxiliares))
+                MaterialesAuxiliares = MaterialesAuxiliares.Substring(0, MaterialesAuxiliares.Length - 1);
+            if (!string.IsNullOrEmpty(MaterialesAuxiliaresTipoDeDocumento))
+                MaterialesAuxiliaresTipoDeDocumento = MaterialesAuxiliaresTipoDeDocumento.Substring(0, MaterialesAuxiliaresTipoDeDocumento.Length - 1);
 
             // FechaContrato
             // DisponibleVentaDerechos
@@ -406,11 +429,21 @@ namespace eCat.Data.VMEntities
                 ComentariosInternos += $"{item.ComentariosInternos},";
                 MasInformacion += $"{item.MasInformacion},";
 
-                //ValoresExclusivosPaises
+                //TerritoriosVenta
+                //TerritoriosExcluidos
                 foreach (var valor in item.TFichasBaseAmbitosCesionValores)
                 {
-                    TerritoriosVenta += $"{valor.IdAmbitoCesion},";
-                }                
+                    if (!valor.Exclusivo)
+                        TerritoriosVenta += $"{valor.IdAmbitoCesion},";
+                    else
+                        TerritoriosExcluidos += $"{valor.IdAmbitoCesion},";
+                }
+
+                //RestriccionesVenta
+                foreach (var valor in item.TFichasBaseAmbitosCesionRestricciones)
+                {
+                    RestriccionesVenta += $"{valor.IdAmbitoCesionRestriccion},";
+                }
             }
             if (!string.IsNullOrEmpty(FechaContrato))
                 FechaContrato = FechaContrato.Substring(0, FechaContrato.Length - 1);
@@ -418,20 +451,37 @@ namespace eCat.Data.VMEntities
                 DisponibleVentaDerechos = DisponibleVentaDerechos.Substring(0, DisponibleVentaDerechos.Length - 1);
             if (!string.IsNullOrEmpty(TerritoriosVenta))
                 TerritoriosVenta = TerritoriosVenta.Substring(0, TerritoriosVenta.Length - 1);
+            if (!string.IsNullOrEmpty(TerritoriosExcluidos))
+                TerritoriosExcluidos = TerritoriosExcluidos.Substring(0, TerritoriosExcluidos.Length - 1);
+            if (!string.IsNullOrEmpty(RestriccionesVenta))
+                RestriccionesVenta = RestriccionesVenta.Substring(0, RestriccionesVenta.Length - 1);
 
-            // EstadoAmbitos
+            // EstadoContrato
             foreach (var item in fichasBase.TFichasBaseAmbitosCesions)
             {
-                EstadoAmbitos += $"{item.IdEstado},";
+                EstadoContrato += $"{item.IdEstado},";
             }
-            if (!string.IsNullOrEmpty(EstadoAmbitos))
-                EstadoAmbitos = EstadoAmbitos.Substring(0, EstadoAmbitos.Length - 1);
-
-            // RestriccionesVenta
+            if (!string.IsNullOrEmpty(EstadoContrato))
+                EstadoContrato = EstadoContrato.Substring(0, EstadoContrato.Length - 1);
 
             // MarcaPublicado
             MarcaPublicado = fichasBase.PublicableWeb;
+        }
 
+        private string FormatText(string text)
+        {
+            if (string.IsNullOrEmpty(text))
+                return text;
+
+            if (text.IndexOf("\n", StringComparison.Ordinal) == -1)
+                return text;
+
+            text = text.Replace("\r\n", @"<\P><P>");
+            text = text.Replace("\n", @"<\P><P>");
+
+            text = "<P>" + text;
+            
+            return text + "</P>";
         }
 
         public string ToCSV()
@@ -451,6 +501,8 @@ namespace eCat.Data.VMEntities
             lineCSV += $"{Autor};";
             lineCSV += $"{EdadMinima};";
             lineCSV += $"{ZonaGeografica};";
+            lineCSV += $"{ZonaGeografica};";
+            lineCSV += $"{Comercializaciones};";
             lineCSV += $"{TipoMaterialEducativo};";
             lineCSV += $"{Coleccion};";
             lineCSV += $"{Serie};";
@@ -468,6 +520,7 @@ namespace eCat.Data.VMEntities
             lineCSV += $"{Alto};";
             lineCSV += $"{Ancho};";
             lineCSV += $"{Grosor};";
+            lineCSV += $"{Peso};";
             lineCSV += $"{PrecioSinImpuestos};";
             lineCSV += $"{PrecioConImpuestos};";
             lineCSV += $"{Impuestos};";
@@ -508,7 +561,7 @@ namespace eCat.Data.VMEntities
             lineCSV += $"{UsuarioDeCreacion};";
             lineCSV += $"{FechaDeModificacion:ddMMyyyy};";
             lineCSV += $"{UsuarioDeModificacion};";
-            lineCSV += $"{FechaDeModificacion:ddMMyyyy};";
+            lineCSV += $"{FechaDePublicacion:ddMMyyyy};";
             lineCSV += $"{UsuarioDePublicacion};";
             lineCSV += $"{FechaDeDespublicacion:ddMMyyyy};";
             lineCSV += $"{UsuarioDeDespublicacion};";
@@ -523,7 +576,7 @@ namespace eCat.Data.VMEntities
             lineCSV += $"{MaterialesAuxiliares};";
             lineCSV += $"{MaterialesAuxiliaresTipoDeDocumento};";
             lineCSV += $"{FechaContrato};";
-            lineCSV += $"{EstadoAmbitos};";
+            lineCSV += $"{EstadoContrato};";
             lineCSV += $"{TerritoriosVenta};";
             lineCSV += $"{TerritoriosExcluidos};";
             lineCSV += $"{RestriccionesVenta};";
@@ -531,7 +584,9 @@ namespace eCat.Data.VMEntities
             lineCSV += $"{Restrictivo};";
             lineCSV += $"{ComentariosInternos};";
             lineCSV += $"{MasInformacion};";
-
+            lineCSV += $"{ImagenCubierta};";
+            lineCSV += $"{TiposDeImagenes};";
+            lineCSV += $"{Visores};";
             lineCSV += $"{MarcaPublicado};";
 
             return lineCSV;

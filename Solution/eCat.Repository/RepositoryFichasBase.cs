@@ -40,6 +40,8 @@
                     .Include(x => x.TFichasBaseMaterialesReferencias_IdInternoReferencia)
                     .Include(x => x.TFichasBaseAmbitosCesions)
                     .Include(x => x.TFichasBaseAmbitosCesions.Select(y => y.TFichasBaseAmbitosCesionValores))
+                    .Include(x => x.TFichasBaseAmbitosCesions.Select(y => y.TFichasBaseAmbitosCesionRestricciones))
+                    .Include(x => x.Documentoes)
                     .Where(x => x.IdPais == idPais);
             }
 
@@ -59,8 +61,11 @@
                 .Include(x => x.TitulosAnejoes)
                 .Include(x => x.TFichasBaseMaterialesReferencias_IdInterno)
                 .Include(x => x.TFichasBaseMaterialesReferencias_IdInternoReferencia)
-                .Include(x => x.TFichasBaseAmbitosCesions)
+                .Include(x => x.TFichasBaseAmbitosCesions)                
                 .Include(x => x.TFichasBaseAmbitosCesions.Select(y => y.TFichasBaseAmbitosCesionValores))
+                .Include(x => x.TFichasBaseAmbitosCesions.Select(y => y.TFichasBaseAmbitosCesionRestricciones))
+                .Include(x => x.TFichasBaseAmbitosCesions)
+                .Include(x => x.Documentoes)
                 .Where(x => x.IdPais == idPais && x.Baja == false);
         }
 

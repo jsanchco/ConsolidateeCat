@@ -24,6 +24,7 @@ namespace eCat.Data.Entities
         /// Child TFichasBaseAmbitosCesionValores where [T_FichasBase_AmbitosCesion_Valores].[IdAmbitoCesion] point to this entity (FK_T_FichasBase_AmbitosCesion_Valores_T_AmbitosCesion)
         /// </summary>
         public virtual System.Collections.Generic.ICollection<TFichasBaseAmbitosCesionValore> TFichasBaseAmbitosCesionValores { get; set; } // T_FichasBase_AmbitosCesion_Valores.FK_T_FichasBase_AmbitosCesion_Valores_T_AmbitosCesion
+        public virtual System.Collections.Generic.ICollection<TFichasBaseAmbitosCesionRestriccion> TFichasBaseAmbitosCesionRestricciones { get; set; } // T_FichasBase_AmbitosCesion_Restricciones.FK_T_FichasBase_AmbitosCesion_Restricciones_T_AmbitosCesion
 
         // Foreign keys
 
@@ -35,6 +36,7 @@ namespace eCat.Data.Entities
         public TAmbitosCesion()
         {
             TFichasBaseAmbitosCesionValores = new System.Collections.Generic.List<TFichasBaseAmbitosCesionValore>();
+            TFichasBaseAmbitosCesionRestricciones = new System.Collections.Generic.List<TFichasBaseAmbitosCesionRestriccion>();
             TFichasBaseAmbitosCesions = new System.Collections.Generic.List<TFichasBaseAmbitosCesion>();
             DilvePais = new System.Collections.Generic.List<DilvePais>();
             DilveTerritorios = new System.Collections.Generic.List<DilveTerritorio>();
