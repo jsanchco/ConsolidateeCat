@@ -18,10 +18,11 @@ namespace eCat.TestConsole
             Console.WriteLine("Press any key to start ...");
             Console.ReadLine();
 
-            var migrationToPCM = new MigrationToPCM();
-            migrationToPCM.Process(4);
+            //var migrationToPCM = new MigrationToPCM();
+            //migrationToPCM.Process(4);
 
             //Util.AddGeneroTerror();
+            Util.CodificacionJerarquias();
 
             Console.WriteLine("");
             Console.WriteLine("Press any key to exit ...");

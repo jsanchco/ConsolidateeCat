@@ -41,6 +41,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="IRepositoryE2RamasClasificacionesGestion.cs" />
     <Compile Include="IRepositoryFichasBase.cs" />
     <Compile Include="IRepositoryIdiomas.cs" />
     <Compile Include="IRepositoryTGeneroes.cs" />

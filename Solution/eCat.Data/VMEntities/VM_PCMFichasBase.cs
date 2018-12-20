@@ -1,7 +1,4 @@
 ﻿// ReSharper disable InconsistentNaming
-
-using System.Runtime.InteropServices.ComTypes;
-
 namespace eCat.Data.VMEntities
 {
     #region Using
