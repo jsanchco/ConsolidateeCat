@@ -23,6 +23,7 @@
             if (all)
             {
                 return Context.FichasBases
+                    .Include(x => x.E2GruposArticulo)
                     .Include(x => x.FichasBaseIdiomasSecundarios)
                     .Include(x => x.RelFichasPersonas)
                     .Include(x => x.FichasBaseSoportes)
@@ -46,6 +47,7 @@
             }
 
             return Context.FichasBases
+                .Include(x => x.E2GruposArticulo)
                 .Include(x => x.FichasBaseIdiomasSecundarios)
                 .Include(x => x.RelFichasPersonas)
                 .Include(x => x.FichasBaseSoportes)

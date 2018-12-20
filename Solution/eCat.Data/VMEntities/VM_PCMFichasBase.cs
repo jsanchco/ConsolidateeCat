@@ -13,8 +13,8 @@ namespace eCat.Data.VMEntities
         public string Codigo { get; set; }
         public short? Pais { get; set; }
         public byte? LineaDeNegocio { get; set; }
-        public string TituloeCat { get; set; }
-        public string TituloDistribuidora { get; set; }
+        public string TituloLargo { get; set; }
+        public string TituloCorto { get; set; }
         public string Subtitulo { get; set; }
         public int? Coeditorial { get; set; }
         public byte? LenguaPrincipal { get; set; }
@@ -22,7 +22,7 @@ namespace eCat.Data.VMEntities
         public string Rol { get; set; }
         public string Persona { get; set; }
         public string Autor { get; set; }
-        public byte? EdadMinima { get; set; }
+        public byte? Edad { get; set; }
         public byte? ZonaGeografica { get; set; }
         public string Comercializaciones { get; set; }
         public byte? TipoMaterialEducativo { get; set; }
@@ -126,8 +126,8 @@ namespace eCat.Data.VMEntities
             Codigo = fichasBase.IdInterno;
             Pais = fichasBase.IdPais;
             LineaDeNegocio = fichasBase.IdLineaNegocio;
-            TituloeCat = FormatText(fichasBase.Titulo);
-            TituloDistribuidora = FormatText(fichasBase.TituloDistribuidora);
+            TituloLargo = FormatText(fichasBase.Titulo);
+            TituloCorto = FormatText(fichasBase.TituloDistribuidora);
             Subtitulo = FormatText(fichasBase.Subtitulo);
             Coeditorial = fichasBase.Coeditorial;
             LenguaPrincipal = fichasBase.Idioma;
@@ -165,7 +165,7 @@ namespace eCat.Data.VMEntities
             if (!string.IsNullOrEmpty(Autor))
                 Autor = Autor.Substring(0, Autor.Length - 1);
 
-            EdadMinima = fichasBase.EdadMinima;
+            Edad = fichasBase.EdadMinima;
             ZonaGeografica = fichasBase.IdZonaGeografica;
             Comercializaciones = fichasBase.IdInternoOrigen;
             TipoMaterialEducativo = fichasBase.IdTipoMaterialEducativo;
@@ -234,7 +234,7 @@ namespace eCat.Data.VMEntities
                 Soporte = Soporte.Substring(0, Soporte.Length - 1);
 
             TipoMaterialSAP = fichasBase.IdTipoMaterialSap;
-            GrupoArticulo = fichasBase.CodigoGrupo;
+            GrupoArticulo = fichasBase.E2GruposArticulo.CodigoGrupo;
             UsoComercial = fichasBase.IdUsoComercial;
             Campana = fichasBase.IdCampaña;
             Proyecto = fichasBase.IdProyecto;
@@ -484,11 +484,10 @@ namespace eCat.Data.VMEntities
         public string ToCSV()
         {
             var lineCSV = $"{Codigo};";
-
             lineCSV += $"{Pais};";
             lineCSV += $"{LineaDeNegocio};";
-            lineCSV += $"{TituloeCat};";
-            lineCSV += $"{TituloDistribuidora};";
+            lineCSV += $"{TituloLargo};";
+            lineCSV += $"{TituloCorto};";
             lineCSV += $"{Subtitulo};";
             lineCSV += $"{Coeditorial};";
             lineCSV += $"{LenguaPrincipal};";
@@ -496,8 +495,7 @@ namespace eCat.Data.VMEntities
             lineCSV += $"{Rol};";
             lineCSV += $"{Persona};";
             lineCSV += $"{Autor};";
-            lineCSV += $"{EdadMinima};";
-            lineCSV += $"{ZonaGeografica};";
+            lineCSV += $"{Edad};";
             lineCSV += $"{ZonaGeografica};";
             lineCSV += $"{Comercializaciones};";
             lineCSV += $"{TipoMaterialEducativo};";
