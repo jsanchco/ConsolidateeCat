@@ -552,6 +552,7 @@ namespace eCat.Data.VMEntities
             lineCSV += $"{FechaPuestaEnMarchaDeFabricacion:ddMMyyyy};";
             lineCSV += $"{FechaFinProcesoInteriores:ddMMyyyy};";
             lineCSV += $"{FechaAltaEnLogistica:ddMMyyyy};";
+            lineCSV += $"{FechaComercializacion:ddMMyyyy};";
             lineCSV += $"{FechaDeCreacion:ddMMyyyy};";
             lineCSV += $"{UsuarioDeCreacion};";
             lineCSV += $"{FechaDeModificacion:ddMMyyyy};";
