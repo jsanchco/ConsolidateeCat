@@ -113,11 +113,6 @@ namespace eCat.Data.VMEntities
 
         public int? MarcaPublicado { get; set; }
 
-        public VM_PCMFichasBase()
-        {
-
-        }
-
         public VM_PCMFichasBase(FichasBase fichasBase)
         {
             //if (fichasBase.IdInterno == "AR111967")

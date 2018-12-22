@@ -6,6 +6,7 @@
     using Data.Entities;
     using Interfaces;
     using IRepository;
+    using System.Linq;
 
     #endregion
 
@@ -30,6 +31,11 @@
         public IEnumerable<FichasBase> GetByIdPais(short idPais, bool all = true)
         {
             return _repositoryFichasBase.GetByIdPais(idPais, all);
+        }
+
+        public IQueryable GetByIdPaisQ(short idPais, bool all = true)
+        {
+            return _repositoryFichasBase.GetByIdPaisQ(idPais, all);
         }
 
         public FichasBase Get(string id)
