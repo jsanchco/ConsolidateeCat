@@ -1,3 +1,5 @@
+using System.ComponentModel.DataAnnotations.Schema;
+
 namespace eCat.Data.Entities
 {
     public class FichasBase
@@ -614,6 +616,9 @@ namespace eCat.Data.Entities
         /// Parent Usuario pointed by [FichasBase].([UsuarioRetirada]) (FK_FichasBase_Usuarios1)
         /// </summary>
         public virtual Usuario Usuario_UsuarioRetirada { get; set; } // FK_FichasBase_Usuarios1
+
+        [NotMapped]
+        public E2Lineasproducto E2Lineasproducto { get; set; } // FK_FichasBase_E2_ACL_DOMINIOS
 
         public FichasBase()
         {

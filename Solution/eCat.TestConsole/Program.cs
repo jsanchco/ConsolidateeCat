@@ -21,9 +21,6 @@ namespace eCat.TestConsole
             var migrationToPCM = new MigrationToPCM();
             migrationToPCM.ProcessQ(4);
 
-            migrationToPCM.Process(4);
-            migrationToPCM.ProcessQ(4);
-
             //Util.AddGeneroTerror();
             //Util.CodificacionJerarquias();
 

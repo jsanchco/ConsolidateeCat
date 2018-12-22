@@ -115,9 +115,6 @@ namespace eCat.Data.VMEntities
 
         public VM_PCMFichasBase(FichasBase fichasBase)
         {
-            //if (fichasBase.IdInterno == "AR111967")
-            //    Console.WriteLine("Found!!!");
-
             Codigo = fichasBase.IdInterno;
             Pais = fichasBase.IdPais;
             LineaDeNegocio = fichasBase.IdLineaNegocio;
