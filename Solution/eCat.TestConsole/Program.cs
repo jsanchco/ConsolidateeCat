@@ -52,7 +52,7 @@ namespace eCat.TestConsole
                     break;
 
                 case '4':
-                    await MenuPruebaServiciosAsync();
+                    await MenuPruebaServicios();
                     break;
 
                 default:
@@ -129,7 +129,7 @@ namespace eCat.TestConsole
             await MenuStart();
         }
 
-        private static async Task MenuPruebaServiciosAsync()
+        private static async Task MenuPruebaServicios()
         {
             Console.Clear();
             Console.WriteLine("***************************************");
@@ -199,7 +199,7 @@ namespace eCat.TestConsole
                     break;
 
                 default:
-                    await MenuPruebaServiciosAsync();
+                    await MenuPruebaServicios();
                     break;
             }
         }

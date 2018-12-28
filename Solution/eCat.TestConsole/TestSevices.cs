@@ -69,7 +69,7 @@
             }
         }
 
-        public static async Task Test_FichasBaseGet(string id)
+        public static async Task Test_FichasBaseGet_old(string id)
         {
             Console.WriteLine("");
             Console.WriteLine($"Call FichasBaseGet({id}) ...");
@@ -115,7 +115,27 @@
             }
         }
 
-        private static async Task GetToken()
+        public static async Task Test_FichasBaseGet(string id)
+        {
+            Console.WriteLine("");
+            Console.WriteLine($"Call FichasBaseGet({id}) ...");
+
+            if (await GetToken())
+            {
+                var response = await _client.GetAsync($"{_route}fichasbase/{id}");
+                if (response.IsSuccessStatusCode)
+                {
+                    var fichasBase = await response.Content.ReadAsStringAsync();
+                    Console.WriteLine(fichasBase);
+                }
+                else
+                {
+                    Console.WriteLine($"Error FichasBaseGet -> {response.StatusCode}");
+                }
+            }
+        }
+
+        private static async Task<bool> GetToken()
         {
             if (string.IsNullOrEmpty(_token))
             {
@@ -126,12 +146,16 @@
                     _token = JsonConvert.DeserializeObject<string>(stringResult);
 
                     _client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", _token);
+
+                    return true;
                 }
-                else
-                {
-                    Console.WriteLine($"Error authenticate -> {authenticate.StatusCode}");
-                }
+
+                Console.WriteLine($"Error authenticate -> {authenticate.StatusCode}");
+
+                return false;
             }
+
+            return true;
         }
     }
 }
