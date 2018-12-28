@@ -34,7 +34,7 @@ namespace eCat.TestConsole
             var stopWatch = new Stopwatch();
             stopWatch.Start();
             var linesCSV = new List<string>();
-            var listFichasBaseARG = _fichasBaseService.GetByIdPais(country, false);
+            var listFichasBaseARG = _fichasBaseService.GetByIdPais(country, true, false);
             foreach (var fichaBase in listFichasBaseARG)
             {
                 var vm_PCMFichasBase = new VM_PCMFichasBase(fichaBase);
@@ -59,7 +59,7 @@ namespace eCat.TestConsole
         public void ProcessQ(short country)
         {
             var nameFile = $"..\\Migration\\Migration_{country}.csv";
-            Console.WriteLine($"Init export [Q] to IdPais ({country}) ...");
+            Console.WriteLine($"Init export to IdPais ({country}) ...");
 
             if (File.Exists(nameFile))
                 File.Delete(nameFile);
@@ -67,7 +67,7 @@ namespace eCat.TestConsole
             var stopWatch = new Stopwatch();
             stopWatch.Start();
             var linesCSV = new List<string>();
-            var listFichasBaseARG = _fichasBaseService.GetByIdPaisQ(country, false);
+            var listFichasBaseARG = _fichasBaseService.GetByIdPaisQ(country, true, false);
             foreach (FichasBase fichaBase in listFichasBaseARG)
             {
                 var vm_PCMFichasBase = new VM_PCMFichasBase(fichaBase);

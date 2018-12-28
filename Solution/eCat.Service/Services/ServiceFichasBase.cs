@@ -28,14 +28,14 @@
             return _repositoryFichasBase.GetAll();
         }
 
-        public IEnumerable<FichasBase> GetByIdPais(short idPais, bool all = true)
+        public IEnumerable<FichasBase> GetByIdPais(short idPais, bool originalProducts, bool all)
         {
-            return _repositoryFichasBase.GetByIdPais(idPais, all);
+            return _repositoryFichasBase.GetByIdPais(idPais, originalProducts, all);
         }
 
-        public IQueryable GetByIdPaisQ(short idPais, bool all = true)
+        public IQueryable GetByIdPaisQ(short idPais, bool originalProducts, bool all)
         {
-            return _repositoryFichasBase.GetByIdPaisQ(idPais, all);
+            return _repositoryFichasBase.GetByIdPaisQ(idPais, originalProducts, all);
         }
 
         public FichasBase Get(string id)

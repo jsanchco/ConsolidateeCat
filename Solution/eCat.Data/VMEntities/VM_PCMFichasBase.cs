@@ -5,6 +5,7 @@ namespace eCat.Data.VMEntities
 
     using Entities;
     using System;
+    using System.Linq;
 
     #endregion
 
@@ -125,7 +126,7 @@ namespace eCat.Data.VMEntities
             LenguaPrincipal = fichasBase.Idioma;
 
             // LenguasSecundarias
-            foreach (var item in fichasBase.FichasBaseIdiomasSecundarios)
+            foreach (var item in fichasBase.FichasBaseIdiomasSecundarios.OrderBy(x => x.Orden))
             {
                 LenguasSecundarias += $"{item.IdIdioma},";
             }
@@ -133,7 +134,7 @@ namespace eCat.Data.VMEntities
                 LenguasSecundarias = LenguasSecundarias.Substring(0, LenguasSecundarias.Length - 1);
 
             // Rol
-            foreach (var item in fichasBase.RelFichasPersonas)
+            foreach (var item in fichasBase.RelFichasPersonas.OrderBy(x => x.Orden))
             {
                 Rol += $"{item.IdRol},";
             }
@@ -141,19 +142,16 @@ namespace eCat.Data.VMEntities
                 Rol = Rol.Substring(0, Rol.Length - 1);
 
             // Persona
-            foreach (var item in fichasBase.RelFichasPersonas)
-            {
-                Persona += $"{item.IdPersona},";
-            }
-            if (!string.IsNullOrEmpty(Persona))
-                Persona = Persona.Substring(0, Persona.Length - 1);
-
             // Autor
-            foreach (var item in fichasBase.RelFichasPersonas)
+            foreach (var item in fichasBase.RelFichasPersonas.OrderBy(x => x.Orden))
             {
                 if (item.IdRol == "AUT")
                     Autor += $"{item.IdPersona},";
+                else
+                    Persona += $"{item.IdPersona},";
             }
+            if (!string.IsNullOrEmpty(Persona))
+                Persona = Persona.Substring(0, Persona.Length - 1);
             if (!string.IsNullOrEmpty(Autor))
                 Autor = Autor.Substring(0, Autor.Length - 1);
 
@@ -218,7 +216,7 @@ namespace eCat.Data.VMEntities
             LineaDeProducto = fichasBase.CodLineaP;
 
             // Soporte
-            foreach (var item in fichasBase.FichasBaseSoportes)
+            foreach (var item in fichasBase.FichasBaseSoportes.OrderBy(x => x.Orden))
             {
                 Soporte += $"{item.IdSoporte},";
             }
@@ -316,9 +314,10 @@ namespace eCat.Data.VMEntities
                 PremioComentarios = PremioComentarios.Substring(0, PremioComentarios.Length - 1);
 
             // PalabraClave
-            foreach (var item in fichasBase.E2FichasBasePalabrasClave)
+            foreach (var item in fichasBase.FichasBaseTesauroes)
             {
-                PalabraClave += $"{item.IdPalabra},";
+                if (item.IdTipo == 1)
+                    PalabraClave += $"{item.IdArbol},";
             }
             if (!string.IsNullOrEmpty(PalabraClave))
                 PalabraClave = PalabraClave.Substring(0, PalabraClave.Length - 1);
@@ -326,7 +325,8 @@ namespace eCat.Data.VMEntities
             // Valores (Tesauro)
             foreach (var item in fichasBase.FichasBaseTesauroes)
             {
-                Valores += $"{item.IdTesauroLibro},";
+                if (item.IdTipo == 3)
+                    Valores += $"{item.IdArbol},";
             }
             if (!string.IsNullOrEmpty(Valores))
                 Valores = Valores.Substring(0, Valores.Length - 1);
@@ -370,15 +370,15 @@ namespace eCat.Data.VMEntities
             IdiomaOriginal = fichasBase.IdiomaOriginal;
 
             // TitulosAfines
-            foreach (var item in fichasBase.TitulosAfines)
+            foreach (var item in fichasBase.TitulosAfines.OrderBy(x => x.Orden))
             {
-                TitulosAfines += $"{item.IdTipoTituloAfin},";
+                TitulosAfines += $"{item.IdObraAfin},";
             }
             if (!string.IsNullOrEmpty(TitulosAfines))
                 TitulosAfines = TitulosAfines.Substring(0, TitulosAfines.Length - 1);
 
             // MaterialesAnejos
-            foreach (var item in fichasBase.TitulosAnejoes)
+            foreach (var item in fichasBase.TitulosAnejoes.OrderBy(x => x.Orden))
             {
                 MaterialesAnejos += $"{item.IdObraAneja},";
             }
@@ -407,12 +407,14 @@ namespace eCat.Data.VMEntities
                 MaterialesAuxiliaresTipoDeDocumento = MaterialesAuxiliaresTipoDeDocumento.Substring(0, MaterialesAuxiliaresTipoDeDocumento.Length - 1);
 
             // FechaContrato
+            // EstadoContrato
             // DisponibleVentaDerechos
             // Restrictivo
             // MasInformacion
             foreach (var item in fichasBase.TFichasBaseAmbitosCesions)
             {
                 FechaContrato += $"{item.Fecha:ddMMyyyy},";
+                EstadoContrato += $"{item.IdEstado},";
                 DisponibleVentaDerechos += $"{Convert.ToInt16(item.DisponibleVentaDerechos)},";
                 Restrictivo += $"{Convert.ToInt16(item.EsRestrictivo)},";
                 ComentariosInternos += $"{item.ComentariosInternos},";
@@ -438,18 +440,18 @@ namespace eCat.Data.VMEntities
                 FechaContrato = FechaContrato.Substring(0, FechaContrato.Length - 1);
             if (!string.IsNullOrEmpty(DisponibleVentaDerechos))
                 DisponibleVentaDerechos = DisponibleVentaDerechos.Substring(0, DisponibleVentaDerechos.Length - 1);
+            if (!string.IsNullOrEmpty(Restrictivo))
+                Restrictivo = Restrictivo.Substring(0, Restrictivo.Length - 1);
+            if (!string.IsNullOrEmpty(ComentariosInternos))
+                ComentariosInternos = ComentariosInternos.Substring(0, ComentariosInternos.Length - 1);
+            if (!string.IsNullOrEmpty(MasInformacion))
+                MasInformacion = MasInformacion.Substring(0, MasInformacion.Length - 1);
             if (!string.IsNullOrEmpty(TerritoriosVenta))
                 TerritoriosVenta = TerritoriosVenta.Substring(0, TerritoriosVenta.Length - 1);
             if (!string.IsNullOrEmpty(TerritoriosExcluidos))
                 TerritoriosExcluidos = TerritoriosExcluidos.Substring(0, TerritoriosExcluidos.Length - 1);
             if (!string.IsNullOrEmpty(RestriccionesVenta))
-                RestriccionesVenta = RestriccionesVenta.Substring(0, RestriccionesVenta.Length - 1);
-
-            // EstadoContrato
-            foreach (var item in fichasBase.TFichasBaseAmbitosCesions)
-            {
-                EstadoContrato += $"{item.IdEstado},";
-            }
+                RestriccionesVenta = RestriccionesVenta.Substring(0, RestriccionesVenta.Length - 1);            
             if (!string.IsNullOrEmpty(EstadoContrato))
                 EstadoContrato = EstadoContrato.Substring(0, EstadoContrato.Length - 1);
 

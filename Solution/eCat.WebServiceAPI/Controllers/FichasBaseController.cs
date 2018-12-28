@@ -23,6 +23,7 @@
         #endregion
 
         // GET api/fichasbase/AR100090
+        [Authorize]
         [WebInvoke(Method = "GET")]
         public IHttpActionResult Get(string id)
         {

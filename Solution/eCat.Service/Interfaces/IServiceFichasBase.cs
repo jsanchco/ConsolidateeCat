@@ -11,8 +11,8 @@
     public interface IServiceFichasBase
     {
         IEnumerable<FichasBase> GetAll();
-        IEnumerable<FichasBase> GetByIdPais(short idPais, bool all = true);
-        IQueryable GetByIdPaisQ(short idPais, bool all = true);
+        IEnumerable<FichasBase> GetByIdPais(short idPais, bool originalProducts, bool all);
+        IQueryable GetByIdPaisQ(short idPais, bool originalProducts, bool all);
         FichasBase Get(string id);
     }
 }

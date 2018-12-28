@@ -18,11 +18,12 @@
             return Context.FichasBases;
         }
 
-        public IEnumerable<FichasBase> GetByIdPais(short idPais, bool all = true)
+        public IEnumerable<FichasBase> GetByIdPais(short idPais, bool originalProducts, bool all)
         {
+            IEnumerable<FichasBase> fichasBase;
             if (all)
             {
-                return Context.FichasBases
+                fichasBase = Context.FichasBases
                     .Include(x => x.E2GruposArticulo)
                     .Include(x => x.FichasBaseIdiomasSecundarios)
                     .Include(x => x.RelFichasPersonas)
@@ -44,9 +45,16 @@
                     .Include(x => x.TFichasBaseAmbitosCesions.Select(y => y.TFichasBaseAmbitosCesionRestricciones))
                     .Include(x => x.Documentoes)
                     .Where(x => x.IdPais == idPais);
+
+                if (originalProducts)
+                {
+                    fichasBase = fichasBase.Where(x => x.IdInternoOrigen == null);
+                }
+
+                return fichasBase;
             }
 
-            return Context.FichasBases
+            fichasBase = Context.FichasBases
                 .Include(x => x.E2GruposArticulo)
                 .Include(x => x.FichasBaseIdiomasSecundarios)
                 .Include(x => x.RelFichasPersonas)
@@ -69,13 +77,22 @@
                 .Include(x => x.TFichasBaseAmbitosCesions)
                 .Include(x => x.Documentoes)
                 .Where(x => x.IdPais == idPais && x.Baja == false);
+
+            if (originalProducts)
+            {
+                fichasBase = fichasBase.Where(x => x.IdInternoOrigen == null);
+            }
+
+            return fichasBase;
         }
 
-        public IQueryable GetByIdPaisQ(short idPais, bool all = true)
+        public IQueryable GetByIdPaisQ(short idPais, bool originalProducts, bool all)
         {
+            IQueryable<FichasBase> fichasBase;
+
             if (all)
             {
-                return Context.FichasBases
+                fichasBase = Context.FichasBases
                     .Include(x => x.E2GruposArticulo)
                     .Include(x => x.FichasBaseIdiomasSecundarios)
                     .Include(x => x.RelFichasPersonas)
@@ -97,9 +114,16 @@
                     .Include(x => x.TFichasBaseAmbitosCesions.Select(y => y.TFichasBaseAmbitosCesionRestricciones))
                     .Include(x => x.Documentoes)
                     .Where(x => x.IdPais == idPais);
+
+                if (originalProducts)
+                {
+                    fichasBase = fichasBase.Where(x => x.IdInternoOrigen == null);
+                }
+
+                return fichasBase;
             }
 
-            return Context.FichasBases
+            fichasBase = Context.FichasBases
                 .Include(x => x.E2GruposArticulo)
                 .Include(x => x.FichasBaseIdiomasSecundarios)
                 .Include(x => x.RelFichasPersonas)
@@ -122,6 +146,13 @@
                 .Include(x => x.TFichasBaseAmbitosCesions)
                 .Include(x => x.Documentoes)
                 .Where(x => x.IdPais == idPais && x.Baja == false);
+
+            if (originalProducts)
+            {
+                fichasBase = fichasBase.Where(x => x.IdInternoOrigen == null);
+            }
+
+            return fichasBase;
         }
 
         public FichasBase Get(string id)
