@@ -66,6 +66,7 @@ namespace eCat.WebServiceAPI.App_Start
         {
             kernel.Bind<IRepositoryFichasBase>().To<RepositoryFichasBase>();
             kernel.Bind<IRepositoryIdiomas>().To<RepositoryIdiomas>();
+            kernel.Bind<IRepositoryTCampanas>().To<RepositoryTCampanas>();
         }        
     }
 }

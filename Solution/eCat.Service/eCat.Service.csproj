@@ -52,12 +52,14 @@
     <Compile Include="Interfaces\IServiceE2RamasClasificacionesGestion.cs" />
     <Compile Include="Interfaces\IServiceFichasBase.cs" />
     <Compile Include="Interfaces\IServiceIdiomas.cs" />
+    <Compile Include="Interfaces\IServiceTCampanas.cs" />
     <Compile Include="Interfaces\IServiceTGeneroes.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\ServiceE2Lineasproductos.cs" />
     <Compile Include="Services\ServiceE2RamasClasificacionesGestion.cs" />
     <Compile Include="Services\ServiceFichasBase.cs" />
     <Compile Include="Services\ServiceIdiomas.cs" />
+    <Compile Include="Services\ServiceTCampanas.cs" />
     <Compile Include="Services\ServiceTGeneroes.cs" />
   </ItemGroup>
   <ItemGroup>

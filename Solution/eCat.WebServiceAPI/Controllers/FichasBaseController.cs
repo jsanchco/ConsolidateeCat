@@ -15,6 +15,7 @@
         private readonly IServiceFichasBase _serviceFichasBase;
 
         #region Constructor
+
         public FichasBaseController(IRepositoryFichasBase repositoryFichasBase)
         {
             _serviceFichasBase = new ServiceFichasBase(repositoryFichasBase);

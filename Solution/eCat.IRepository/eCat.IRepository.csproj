@@ -45,6 +45,7 @@
     <Compile Include="IRepositoryE2RamasClasificacionesGestion.cs" />
     <Compile Include="IRepositoryFichasBase.cs" />
     <Compile Include="IRepositoryIdiomas.cs" />
+    <Compile Include="IRepositoryTCampanas.cs" />
     <Compile Include="IRepositoryTGeneroes.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

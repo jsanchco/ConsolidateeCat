@@ -181,7 +181,7 @@ namespace eCat.Data.VMEntities
             Impuestos = fichasBase.IvaPorCiento;
 
             // Edicion
-            foreach (var item in fichasBase.E2Tiradasedicion)
+            foreach (var item in fichasBase.E2Tiradasedicion.OrderBy(x => x.NumeroEdicion))
             {
                 Edicion += $"{item.NumeroEdicion},";
             }
@@ -189,7 +189,7 @@ namespace eCat.Data.VMEntities
                 Edicion = Edicion.Substring(0, Edicion.Length - 1);
 
             // Fecha
-            foreach (var item in fichasBase.E2Tiradasedicion)
+            foreach (var item in fichasBase.E2Tiradasedicion.OrderBy(x => x.NumeroEdicion))
             {
                 if (item.Fecha.HasValue)
                     Edicion += $"{item.Fecha.Value:ddMMyyyy},";
@@ -198,7 +198,7 @@ namespace eCat.Data.VMEntities
                 Fecha = Fecha.Substring(0, Fecha.Length - 1);
 
             // Tirada
-            foreach (var item in fichasBase.E2Tiradasedicion)
+            foreach (var item in fichasBase.E2Tiradasedicion.OrderBy(x => x.NumeroEdicion))
             {
                 Tirada += $"{item.Tirada},";
             }
@@ -206,7 +206,7 @@ namespace eCat.Data.VMEntities
                 Tirada = Tirada.Substring(0, Tirada.Length - 1);
 
             // DepositoLegal
-            foreach (var item in fichasBase.E2Tiradasedicion)
+            foreach (var item in fichasBase.E2Tiradasedicion.OrderBy(x => x.NumeroEdicion))
             {
                 DepositoLegal += $"{item.DepositoLegal},";
             }
@@ -290,7 +290,7 @@ namespace eCat.Data.VMEntities
                 FraseDescriptivaEspecial_Chavales = FraseDescriptivaEspecial_Chavales.Substring(0, FraseDescriptivaEspecial_Chavales.Length - 1);
 
             // Premio
-            foreach (var item in fichasBase.E2FichasBasePremio)
+            foreach (var item in fichasBase.E2FichasBasePremio.OrderBy(x => x.Anyo))
             {
                 Premio += $"{item.IdPremio},";
             }
@@ -298,7 +298,7 @@ namespace eCat.Data.VMEntities
                 Premio = Premio.Substring(0, Premio.Length - 1);
 
             // PremioAno
-            foreach (var item in fichasBase.E2FichasBasePremio)
+            foreach (var item in fichasBase.E2FichasBasePremio.OrderBy(x => x.Anyo))
             {
                 PremioAno += $"{item.Anyo},";
             }
@@ -306,7 +306,7 @@ namespace eCat.Data.VMEntities
                 PremioAno = PremioAno.Substring(0, PremioAno.Length - 1);
 
             // PremioComentarios
-            foreach (var item in fichasBase.E2FichasBasePremio)
+            foreach (var item in fichasBase.E2FichasBasePremio.OrderBy(x => x.Anyo))
             {
                 PremioComentarios += $"{FormatText(item.Comentarios)},";
             }
@@ -398,8 +398,7 @@ namespace eCat.Data.VMEntities
             foreach (var item in fichasBase.Documentoes)
             {
                 MaterialesAuxiliares += $"{item.IdDocumento},";
-                if (item.TiposDocumento != null)
-                    MaterialesAuxiliaresTipoDeDocumento += $"{item.TiposDocumento.IdTipoDocumento},";
+                MaterialesAuxiliaresTipoDeDocumento += $"{item.Tipo},";
             }
             if (!string.IsNullOrEmpty(MaterialesAuxiliares))
                 MaterialesAuxiliares = MaterialesAuxiliares.Substring(0, MaterialesAuxiliares.Length - 1);
@@ -467,8 +466,8 @@ namespace eCat.Data.VMEntities
             if (text.IndexOf("\n", StringComparison.Ordinal) == -1)
                 return text;
 
-            text = text.Replace("\r\n", @"<\P><P>");
-            text = text.Replace("\n", @"<\P><P>");
+            text = text.Replace("\r\n", @"</P><P>");
+            text = text.Replace("\n", @"</P><P>");
 
             text = "<P>" + text;
             

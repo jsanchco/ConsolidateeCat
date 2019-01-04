@@ -365,6 +365,7 @@
     <Compile Include="RepositoryE2RamasClasificacionesGestion.cs" />
     <Compile Include="RepositoryFichasBase.cs" />
     <Compile Include="RepositoryIdiomas.cs" />
+    <Compile Include="RepositoryTCampanas.cs" />
     <Compile Include="RepositoryTGeneroes.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -29,6 +29,14 @@
             return true;
         }
 
+        public static IEnumerable<TCampañas> Get_TCampanas()
+        {
+            Console.WriteLine("Get_TCampanas ...");
+            var serviceTCampanas = new ServiceTCampanas(new RepositoryTCampanas());
+
+            return serviceTCampanas.Get();
+        }
+
         public static void CodificacionJerarquias()
         {
             Console.WriteLine("CodificacionJerarquias ...");

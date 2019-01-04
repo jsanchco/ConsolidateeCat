@@ -27,7 +27,8 @@ namespace eCat.TestConsole
             Console.WriteLine("1 - Migración");
             Console.WriteLine("2 - Añadir Género Terror");
             Console.WriteLine("3 - Codificación Jerarquías");
-            Console.WriteLine("4 - Prueba de Servicios");
+            Console.WriteLine("4 - Prueba de Servicios (Test previos)");
+            Console.WriteLine("5 - Prueba de Servicios");
             Console.WriteLine("0 - Salir");
             Console.WriteLine("");
             Console.WriteLine("Elige una opción ...");
@@ -52,6 +53,10 @@ namespace eCat.TestConsole
                     break;
 
                 case '4':
+                    await MenuPruebaServiciosTest();
+                    break;
+
+                case '5':
                     await MenuPruebaServicios();
                     break;
 
@@ -129,12 +134,12 @@ namespace eCat.TestConsole
             await MenuStart();
         }
 
-        private static async Task MenuPruebaServicios()
+        private static async Task MenuPruebaServiciosTest()
         {
             Console.Clear();
-            Console.WriteLine("***************************************");
-            Console.WriteLine("*         Prueba de Servicios         *");
-            Console.WriteLine("***************************************");
+            Console.WriteLine("******************************************************");
+            Console.WriteLine("*         Prueba de Servicios (Test previos)         *");
+            Console.WriteLine("******************************************************");
             Console.WriteLine("");
             Console.WriteLine("");
             Console.WriteLine("1 - echoping");
@@ -186,6 +191,55 @@ namespace eCat.TestConsole
                     Console.Write("Introduce el Id de FichasBase ... ");
                     var idFichasBase = Console.ReadLine();
                     await TestSevices.Test_FichasBaseGet(idFichasBase);
+
+                    Console.WriteLine("");
+                    Console.WriteLine("Presiona cualquier tecla para regresar al Menú inicial ...");
+                    Console.ReadKey();
+                    await MenuStart();
+
+                    break;
+
+                case '0':
+                    await MenuStart();
+                    break;
+
+                default:
+                    await MenuPruebaServiciosTest();
+                    break;
+            }
+        }
+
+        private static async Task MenuPruebaServicios()
+        {
+            Console.Clear();
+            Console.WriteLine("***************************************");
+            Console.WriteLine("*         Prueba de Servicios         *");
+            Console.WriteLine("***************************************");
+            Console.WriteLine("");
+            Console.WriteLine("");
+            Console.WriteLine("1 - TCampanas_Get");
+            Console.WriteLine("2 - pa_Get_T_Campañas");
+            Console.WriteLine("0 - Salir");
+            Console.WriteLine("");
+            Console.Write("Elige una opción ... ");
+
+            var option = Console.ReadKey();
+            switch (option.KeyChar)
+            {
+                case '1':
+                    Console.WriteLine("");
+                    await Services.TCampanas_Get();                    
+
+                    Console.WriteLine("");
+                    Console.WriteLine("Presiona cualquier tecla para regresar al Menú inicial ...");
+                    Console.ReadKey();
+                    await MenuStart();
+
+                    break;
+
+                case '2':
+                    Console.WriteLine("");
+                    await Services.pa_Get_T_Campañas();
 
                     Console.WriteLine("");
                     Console.WriteLine("Presiona cualquier tecla para regresar al Menú inicial ...");
