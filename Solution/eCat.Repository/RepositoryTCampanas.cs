@@ -7,6 +7,7 @@
     using IRepository;
     using Common;
     using System.Data.SqlClient;
+    using Data.Parameters;
 
     #endregion
 
@@ -17,9 +18,22 @@
             return Context.TCampañas;
         }
 
-        public IEnumerable<TCampañas> Get_pa_TCampanas(int nIdLineaP, int nPagina, int nCantidad, string sFechaInicio)
+        public object Get_pa_TCampanas(DataCampana dataCampana)
         {
-            var result = Context.Database.SqlQuery<TCampañas>(
+            var result = Context.Database.SqlQuery<string>(
+                "exec dbo.[pa_Get_T_Campañas] @nIdLineaP, @nPagina, @nCantidad, @sFechaInicio",
+                new SqlParameter("@nIdLineaP", dataCampana.IdLineaP),
+                new SqlParameter("@nPagina", dataCampana.Pagina),
+                new SqlParameter("@nCantidad", dataCampana.Cantidad),
+                new SqlParameter("@sFechaInicio", dataCampana.FechaInicio)
+            );
+
+            return result;
+        }
+
+        public object Get_pa_TCampanas(int nIdLineaP, int nPagina, int nCantidad, string sFechaInicio)
+        {
+            var result = Context.Database.SqlQuery<string>(
                 "exec dbo.[pa_Get_T_Campañas] @nIdLineaP, @nPagina, @nCantidad, @sFechaInicio",
                 new SqlParameter("@nIdLineaP", nIdLineaP),
                 new SqlParameter("@nPagina", nPagina),
@@ -27,7 +41,7 @@
                 new SqlParameter("@sFechaInicio", sFechaInicio)
             );
 
-            return null;
+            return result;
         }
     }
 }

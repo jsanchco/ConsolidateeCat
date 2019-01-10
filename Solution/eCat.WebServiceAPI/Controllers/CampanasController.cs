@@ -1,4 +1,5 @@
-﻿namespace eCat.WebServiceAPI.Controllers
+﻿// ReSharper disable InconsistentNaming
+namespace eCat.WebServiceAPI.Controllers
 {
     #region Using
 
@@ -6,7 +7,7 @@
     using IRepository;
     using Service.Interfaces;
     using Service.Services;
-    using System.ServiceModel.Web;
+    using Data.Parameters;
     using System.Linq;
 
     #endregion
@@ -26,19 +27,28 @@
         #endregion 
 
         // GET api/campanas
-        [Authorize]
-        [WebInvoke(Method = "GET")]
+        //[Authorize]
+        [HttpGet]
         public IHttpActionResult Get()
         {
             return Json(_serviceTCampanas.Get().ToList());
         }
 
-        [Authorize]
-        [WebInvoke(Method = "GET")]
+        [HttpGet]
         [Route("paCampanas")]
-        public IHttpActionResult paCampanas()
+        public IHttpActionResult paCampanas([FromUri] DataCampana dataCampana)
         {
-            return Json(_serviceTCampanas.Get().ToList());
+            return Json(_serviceTCampanas.Get_pa_TCampanas(dataCampana));
         }
+
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing)
+            {
+                _serviceTCampanas.Dispose();
+            }
+            base.Dispose(disposing);
+        }
+
     }
 }

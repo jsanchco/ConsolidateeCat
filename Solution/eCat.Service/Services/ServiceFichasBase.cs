@@ -7,11 +7,14 @@
     using Interfaces;
     using IRepository;
     using System.Linq;
+    using Data.Parameters;
+    using System;
 
     #endregion
 
     public class ServiceFichasBase : IServiceFichasBase
     {
+        private bool _disposed;
         private readonly IRepositoryFichasBase _repositoryFichasBase;
 
         #region Constructor
@@ -42,5 +45,32 @@
         {
             return _repositoryFichasBase.Get(id);
         }
+
+        public long pa_InsertFichasBase(DataFichasBase dataFichasBase)
+        {
+            return _repositoryFichasBase.pa_InsertFichasBase(dataFichasBase);
+        }
+
+        #region Dispose
+
+        protected virtual void Dispose(bool disposing)
+        {
+            if (!_disposed)
+            {
+                if (disposing)
+                {
+                    _repositoryFichasBase.Dispose();
+                }
+            }
+            _disposed = true;
+        }
+
+        public void Dispose()
+        {
+            Dispose(true);
+            GC.SuppressFinalize(this);
+        }
+
+        #endregion
     }
 }

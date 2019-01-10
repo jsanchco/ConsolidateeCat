@@ -4,12 +4,15 @@
 
     using Data.Entities;
     using System.Collections.Generic;
+    using Data.Parameters;
+    using System;
 
     #endregion
 
-    public interface IServiceTCampanas
+    public interface IServiceTCampanas : IDisposable
     {
         IEnumerable<TCampañas> Get();
-        IEnumerable<TCampañas> Get_pa_TCampanas(int nIdLineaP, int nPagina, int nCantidad, string sFechaInicio);
+        object Get_pa_TCampanas(int nIdLineaP, int nPagina, int nCantidad, string sFechaInicio);
+        object Get_pa_TCampanas(DataCampana dataCampana);
     }
 }

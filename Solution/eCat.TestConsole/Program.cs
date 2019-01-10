@@ -5,6 +5,8 @@ namespace eCat.TestConsole
 
     using System;
     using System.Threading.Tasks;
+    using Data.Parameters;
+    using TestData;
 
     #endregion
 
@@ -219,6 +221,7 @@ namespace eCat.TestConsole
             Console.WriteLine("");
             Console.WriteLine("1 - TCampanas_Get");
             Console.WriteLine("2 - pa_Get_T_Campañas");
+            Console.WriteLine("3 - pa_InsertFichasBase");            
             Console.WriteLine("0 - Salir");
             Console.WriteLine("");
             Console.Write("Elige una opción ... ");
@@ -239,7 +242,18 @@ namespace eCat.TestConsole
 
                 case '2':
                     Console.WriteLine("");
-                    await Services.pa_Get_T_Campañas();
+                    await Services.pa_Get_T_Campañas(new DataCampana { IdLineaP = 1, Pagina = 1, Cantidad = 1, FechaInicio = "01-01-2008" });
+
+                    Console.WriteLine("");
+                    Console.WriteLine("Presiona cualquier tecla para regresar al Menú inicial ...");
+                    Console.ReadKey();
+                    await MenuStart();
+
+                    break;
+
+                case '3':
+                    Console.WriteLine("");
+                    await Services.pa_InsertFichasBase(TestDataFichasBase.Test1());
 
                     Console.WriteLine("");
                     Console.WriteLine("Presiona cualquier tecla para regresar al Menú inicial ...");

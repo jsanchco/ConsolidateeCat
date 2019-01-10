@@ -146,7 +146,8 @@ namespace eCat.Data.VMEntities
             foreach (var item in fichasBase.RelFichasPersonas.OrderBy(x => x.Orden))
             {
                 if (item.IdRol == "AUT")
-                    Autor += $"{item.IdPersona},";
+                    Persona += $"{item.IdPersona},";
+                    //Autor += $"{item.IdPersona},";
                 else
                     Persona += $"{item.IdPersona},";
             }

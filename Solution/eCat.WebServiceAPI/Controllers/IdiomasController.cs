@@ -1,7 +1,4 @@
-﻿using System.Linq;
-using eCat.Repository;
-
-namespace eCat.WebServiceAPI.Controllers
+﻿namespace eCat.WebServiceAPI.Controllers
 {
     #region Using
 
@@ -30,12 +27,7 @@ namespace eCat.WebServiceAPI.Controllers
         [WebInvoke(Method = "GET")]
         public IHttpActionResult Get(int id)
         {
-            var serviceTCampanas = new ServiceTCampanas(new RepositoryTCampanas());
-
-            var tCampanas =  serviceTCampanas.Get().ToList();
-
-            return Json(tCampanas);
-            //return Json(_serviceIdiomas.Get(id));
+            return Json(_serviceIdiomas.Get(id));
         }
 
         [WebInvoke(Method = "POST", ResponseFormat = WebMessageFormat.Json, RequestFormat = WebMessageFormat.Json)]

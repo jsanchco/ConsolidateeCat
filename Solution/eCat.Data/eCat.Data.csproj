@@ -34,6 +34,7 @@
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Web" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -42,6 +43,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Common\ResultStoreProcedure.cs" />
     <Compile Include="Entities\Aplicacione.cs" />
     <Compile Include="Entities\AuditoriaBusqueda.cs" />
     <Compile Include="Entities\AuditoriaBusquedaGeneral.cs" />
@@ -352,6 +354,9 @@
     <Compile Include="Entities\VwLirInformesJerarquiaECat.cs" />
     <Compile Include="Entities\VwPortada.cs" />
     <Compile Include="Entities\VwProductosrelacionado.cs" />
+    <Compile Include="Parameters\DataCampana.cs" />
+    <Compile Include="Parameters\DataFichasBase.cs" />
+    <Compile Include="Parameters\IData.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="VMEntities\VM_PCMFichasBase.cs" />
   </ItemGroup>

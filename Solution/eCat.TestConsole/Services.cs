@@ -9,7 +9,7 @@
     using System.Threading.Tasks;
     using Models;
     using Newtonsoft.Json;
-    using System.Linq;
+    using Data.Parameters;
 
     #endregion
 
@@ -66,14 +66,15 @@
             }
         }
 
-        public static async Task pa_Get_T_Campañas()
+        public static async Task pa_Get_T_Campañas(DataCampana dataCampana)
         {
             Console.WriteLine("");
             Console.WriteLine("pa_Get_T_Campañas ...");
 
             if (await GetToken())
-            {
-                var response = await _client.GetAsync($"{_route}campanas/paCampanas");
+            {                
+                var url = $"{_route}campanas/paCampanas/?{dataCampana.ToUri()}";
+                var response = await _client.GetAsync(url);
                 if (response.IsSuccessStatusCode)
                 {
                     var campanas = await response.Content.ReadAsStringAsync();
@@ -82,6 +83,27 @@
                 else
                 {
                     Console.WriteLine($"Error pa_Get_T_Campañas -> {response.StatusCode}");
+                }
+            }
+        }
+
+        public static async Task pa_InsertFichasBase(DataFichasBase dataFichaBase)
+        {
+            Console.WriteLine("");
+            Console.WriteLine("pa_InsertFichasBase ...");
+
+            if (await GetToken())
+            {
+                var url = $"{_route}fichasbase/pa_InsertFichasBase/?{dataFichaBase.ToUri()}";
+                var response = await _client.GetAsync(url);
+                if (response.IsSuccessStatusCode)
+                {
+                    var code = await response.Content.ReadAsStringAsync();
+                    Console.WriteLine($"pa_InsertFichasBase [code] -> {code}");
+                }
+                else
+                {
+                    Console.WriteLine($"Error pa_InsertFichasBase -> {response.StatusCode}");
                 }
             }
         }

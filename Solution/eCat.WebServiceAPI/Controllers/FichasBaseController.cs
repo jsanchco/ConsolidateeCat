@@ -6,10 +6,11 @@
     using Service.Interfaces;
     using IRepository;
     using Service.Services;
-    using System.ServiceModel.Web;
+    using Data.Parameters;
 
     #endregion
 
+    [RoutePrefix("api/fichasbase")]
     public class FichasBaseController : ApiController
     {
         private readonly IServiceFichasBase _serviceFichasBase;
@@ -25,10 +26,27 @@
 
         // GET api/fichasbase/AR100090
         [Authorize]
-        [WebInvoke(Method = "GET")]
+        [HttpGet]
         public IHttpActionResult Get(string id)
         {
             return Json(_serviceFichasBase.Get(id));
+        }
+
+        [Authorize]
+        [HttpGet]
+        [Route("pa_InsertFichasBase")]
+        public IHttpActionResult pa_InsertFichasBase([FromUri] DataFichasBase dataFichasBase)
+        {
+            return Json(_serviceFichasBase.pa_InsertFichasBase(dataFichasBase));
+        }
+
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing)
+            {
+                _serviceFichasBase.Dispose();
+            }
+            base.Dispose(disposing);
         }
     }
 }

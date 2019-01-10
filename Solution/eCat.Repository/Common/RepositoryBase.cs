@@ -6,7 +6,7 @@
 
     #endregion
 
-    public class RepositoryBase
+    public class RepositoryBase : IDisposable
     {
         #region Members
 
@@ -40,7 +40,6 @@
                     Context.Dispose();
                 }
             }
-
             _disposed = true;
         }
 
