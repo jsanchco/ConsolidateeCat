@@ -221,7 +221,8 @@ namespace eCat.TestConsole
             Console.WriteLine("");
             Console.WriteLine("1 - TCampanas_Get");
             Console.WriteLine("2 - pa_Get_T_Campañas");
-            Console.WriteLine("3 - pa_InsertFichasBase");            
+            Console.WriteLine("3 - pa_Insert_T_Campanas");
+            Console.WriteLine("4 - InsertFichasBase");            
             Console.WriteLine("0 - Salir");
             Console.WriteLine("");
             Console.Write("Elige una opción ... ");
@@ -253,7 +254,18 @@ namespace eCat.TestConsole
 
                 case '3':
                     Console.WriteLine("");
-                    await Services.pa_InsertFichasBase(TestDataFichasBase.Test1());
+                    await Services.pa_Insert_T_Campanas(TestDataCampanas.Test1());
+
+                    Console.WriteLine("");
+                    Console.WriteLine("Presiona cualquier tecla para regresar al Menú inicial ...");
+                    Console.ReadKey();
+                    await MenuStart();
+
+                    break;
+
+                case '4':
+                    Console.WriteLine("");
+                    await Services.InsertFichasBase(TestDataFichasBase.Test1());
 
                     Console.WriteLine("");
                     Console.WriteLine("Presiona cualquier tecla para regresar al Menú inicial ...");

@@ -87,23 +87,44 @@
             }
         }
 
-        public static async Task pa_InsertFichasBase(DataFichasBase dataFichaBase)
+        public static async Task pa_Insert_T_Campanas(DataInsertTCampana dataInsertTCampana)
         {
             Console.WriteLine("");
-            Console.WriteLine("pa_InsertFichasBase ...");
+            Console.WriteLine("pa_Insert_T_Campanas ...");
 
             if (await GetToken())
             {
-                var url = $"{_route}fichasbase/pa_InsertFichasBase/?{dataFichaBase.ToUri()}";
+                var url = $"{_route}campanas/pa_Insert_T_Campanas/?{dataInsertTCampana.ToUri()}";
                 var response = await _client.GetAsync(url);
                 if (response.IsSuccessStatusCode)
                 {
                     var code = await response.Content.ReadAsStringAsync();
-                    Console.WriteLine($"pa_InsertFichasBase [code] -> {code}");
+                    Console.WriteLine($"pa_Insert_T_Campanas [code] -> {code}");
                 }
                 else
                 {
-                    Console.WriteLine($"Error pa_InsertFichasBase -> {response.StatusCode}");
+                    Console.WriteLine($"Error pa_Insert_T_Campanas -> {response.StatusCode}");
+                }
+            }
+        }
+
+        public static async Task InsertFichasBase(DataFichasBase dataFichaBase)
+        {
+            Console.WriteLine("");
+            Console.WriteLine("InsertFichasBase ...");
+
+            if (await GetToken())
+            {
+                var url = $"{_route}consolidateecat/insertfichasbase/?{dataFichaBase.ToUri()}";
+                var response = await _client.GetAsync(url);
+                if (response.IsSuccessStatusCode)
+                {
+                    var code = await response.Content.ReadAsStringAsync();
+                    Console.WriteLine($"InsertFichasBase [code] -> {code}");
+                }
+                else
+                {
+                    Console.WriteLine($"Error InsertFichasBase -> {response.StatusCode}");
                 }
             }
         }

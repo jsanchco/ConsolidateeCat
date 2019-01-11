@@ -36,6 +36,7 @@ namespace eCat.Data.Parameters
         public string IdInternoOrigenSAP { get; set; }
         public int IdPais { get; set; }        
         public int? TipoMaterialEducativo { get; set; }
+        public string JerarquiaProducto { get; set; }
 
         public string ToUri()
         {
@@ -65,6 +66,7 @@ namespace eCat.Data.Parameters
             query["IdPais"] = IdPais.ToString();
             query["PorcentajeCoedicion"] = PorcentajeCoedicion?.ToString();
             query["TipoMaterialEducativo"] = TipoMaterialEducativo?.ToString();
+            query["JerarquiaProducto"] = JerarquiaProducto;
 
             return query.ToString();
         }

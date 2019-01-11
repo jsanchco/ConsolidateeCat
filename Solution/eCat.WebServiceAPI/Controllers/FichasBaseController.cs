@@ -40,6 +40,8 @@
             return Json(_serviceFichasBase.pa_InsertFichasBase(dataFichasBase));
         }
 
+        #region Dispose       
+        
         protected override void Dispose(bool disposing)
         {
             if (disposing)
@@ -48,5 +50,7 @@
             }
             base.Dispose(disposing);
         }
+
+        #endregion
     }
 }

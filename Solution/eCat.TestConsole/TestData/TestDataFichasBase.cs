@@ -13,8 +13,8 @@
         {
             return new DataFichasBase
             {
-                IdInterno = "AR191694",
-                Titulo = "Biologia Savia. Los seres vivos unidad",
+                IdInterno = "AR191700",
+                Titulo = "Biología Savia. Los seres vivos: unidad",
                 IdLineaNegocio = 25, // ARTXT
                 Idioma = 13,
                 CodLinea_P = "TXT",
@@ -27,7 +27,8 @@
                 FechaComerializacion = new DateTime(2017, 12, 26),
                 UsuarioCreacion = "PruebasIECISA",
                 IdPais = 4, // AR
-                TipoMaterialEducativo = 1
+                TipoMaterialEducativo = 1,
+                JerarquiaProducto = "090104009040007004"
             };
         }
     }

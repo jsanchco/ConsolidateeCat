@@ -35,6 +35,11 @@
             return _repositoryTCampanas.Get_pa_TCampanas(dataCampana);
         }
 
+        public long pa_Insert_T_Campanas(DataInsertTCampana dataInsertTCampana)
+        {
+            return _repositoryTCampanas.pa_Insert_T_Campanas(dataInsertTCampana);
+        }
+
         object IServiceTCampanas.Get_pa_TCampanas(int nIdLineaP, int nPagina, int nCantidad, string sFechaInicio)
         {
             return _repositoryTCampanas.Get_pa_TCampanas(nIdLineaP, nPagina, nCantidad, sFechaInicio);

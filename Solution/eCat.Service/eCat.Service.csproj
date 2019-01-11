@@ -31,6 +31,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="eCat.TestConsole">
+      <HintPath>..\eCat.WebServiceAPI\Bin\eCat.TestConsole.exe</HintPath>
+    </Reference>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
@@ -55,6 +58,8 @@
     <Compile Include="Interfaces\IServiceTCampanas.cs" />
     <Compile Include="Interfaces\IServiceTGeneroes.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\ConsolidateeCat\ServiceAddConsolidateeCat.cs" />
+    <Compile Include="Services\ConsolidateeCat\Util.cs" />
     <Compile Include="Services\ServiceE2Lineasproductos.cs" />
     <Compile Include="Services\ServiceE2RamasClasificacionesGestion.cs" />
     <Compile Include="Services\ServiceFichasBase.cs" />

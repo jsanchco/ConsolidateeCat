@@ -1,4 +1,5 @@
-﻿namespace eCat.Repository
+﻿
+namespace eCat.Repository
 {
     #region Using
 
@@ -8,6 +9,10 @@
     using Common;
     using System.Data.SqlClient;
     using Data.Parameters;
+    using System;
+    using System.Linq;
+    using System.Reflection;
+    using eCat.Data.Common;
 
     #endregion
 
@@ -31,6 +36,43 @@
             return result;
         }
 
+        public long pa_Insert_T_Campanas(DataInsertTCampana dataInsertTCampana)
+        {
+            var resultStoreProcedure =
+                new ResultStoreProcedure(MethodBase.GetCurrentMethod(), dataInsertTCampana.ToUri());
+
+            try
+            {
+                Context.Database.SqlQuery<long>(
+                    "exec dbo.[pa_Insert_T_Campañas] @nsDescripcion, @dtDesde, @dtHasta",
+                    new SqlParameter("@nsDescripcion", dataInsertTCampana.Descripcion),
+                    new SqlParameter("@dtDesde", dataInsertTCampana.Desde),
+                    new SqlParameter("@dtHasta", dataInsertTCampana.Hasta));
+
+                const int code = 1;
+                resultStoreProcedure.Code = code;
+
+                resultStoreProcedure.Status = code == 1 ? Status.Ok : Status.Error;
+
+                return code;
+            }
+            catch (Exception e)
+            {
+                resultStoreProcedure.Status = Status.Exception;
+                resultStoreProcedure.Description = e.Message;
+
+                throw;
+            }
+            finally
+            {
+                var fileName = $"{AppDomain.CurrentDomain.BaseDirectory}\\App_Data\\log.txt";
+                using (var sw = new System.IO.StreamWriter(fileName, true))
+                {
+                    sw.WriteLine(resultStoreProcedure.ToString());
+                }
+            }
+        }
+
         public object Get_pa_TCampanas(int nIdLineaP, int nPagina, int nCantidad, string sFechaInicio)
         {
             var result = Context.Database.SqlQuery<string>(
@@ -43,5 +85,10 @@
 
             return result;
         }
+    }
+
+    public class MyReturn
+    {
+        public long Value { get; set; }
     }
 }
