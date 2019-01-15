@@ -35,7 +35,7 @@
             if (login == null)
                 throw new HttpResponseException(HttpStatusCode.BadRequest);
 
-            var isCredentialValid = (login.Password == "123456");
+            var isCredentialValid = (login.Username == "adminecat") && (login.Password == "ecatadm1n");
             if (isCredentialValid)
             {
                 var token = TokenGenerator.GenerateTokenJwt(login.Username);

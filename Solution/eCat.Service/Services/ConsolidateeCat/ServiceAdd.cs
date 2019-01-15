@@ -12,7 +12,7 @@
 
     #endregion
 
-    public static class ServiceAddConsolidateeCat
+    public static class ServiceAdd
     {
         public static List<ResultStoreProcedure> InsertFichaBase(string connectionString, DataFichasBase dataFichasBase)
         {

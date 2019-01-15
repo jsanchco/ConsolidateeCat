@@ -58,7 +58,8 @@
     <Compile Include="Interfaces\IServiceTCampanas.cs" />
     <Compile Include="Interfaces\IServiceTGeneroes.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Services\ConsolidateeCat\ServiceAddConsolidateeCat.cs" />
+    <Compile Include="Services\ConsolidateeCat\ServiceAdd.cs" />
+    <Compile Include="Services\ConsolidateeCat\ServiceMasterMaintenance.cs" />
     <Compile Include="Services\ConsolidateeCat\Util.cs" />
     <Compile Include="Services\ServiceE2Lineasproductos.cs" />
     <Compile Include="Services\ServiceE2RamasClasificacionesGestion.cs" />

@@ -57,7 +57,7 @@
             Console.WriteLine("");
             Console.WriteLine("Call authenticate ...");
 
-            var response = await _client.PostAsJsonAsync($"{_route}login/authenticate", new LoginRequest { Username = "admin", Password = "123456" });
+            var response = await _client.PostAsJsonAsync($"{_route}login/authenticate", new LoginRequest { Username = "adminecat", Password = "ecatadm1n" });
             if (response.IsSuccessStatusCode)
             {
                 _token = await response.Content.ReadAsStringAsync();
@@ -76,7 +76,7 @@
 
             if (string.IsNullOrEmpty(_token))
             {
-                var authenticate = await _client.PostAsJsonAsync($"{_route}login/authenticate", new LoginRequest { Username = "admin", Password = "123456" });
+                var authenticate = await _client.PostAsJsonAsync($"{_route}login/authenticate", new LoginRequest { Username = "adminecat", Password = "ecatadm1n" });
                 if (authenticate.IsSuccessStatusCode)
                 {
                     var stringResult = await authenticate.Content.ReadAsStringAsync();
@@ -139,7 +139,7 @@
         {
             if (string.IsNullOrEmpty(_token))
             {
-                var authenticate = await _client.PostAsJsonAsync($"{_route}login/authenticate", new LoginRequest { Username = "admin", Password = "123456" });
+                var authenticate = await _client.PostAsJsonAsync($"{_route}login/authenticate", new LoginRequest { Username = "adminecat", Password = "ecatadm1n" });
                 if (authenticate.IsSuccessStatusCode)
                 {
                     var stringResult = await authenticate.Content.ReadAsStringAsync();

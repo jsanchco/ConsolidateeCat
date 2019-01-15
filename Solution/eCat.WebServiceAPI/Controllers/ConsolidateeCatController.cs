@@ -11,14 +11,32 @@
     [RoutePrefix("api/consolidateecat")]
     public class ConsolidateeCatController : ApiController
     {
-        [Authorize]
+        //[Authorize]
         [HttpGet]
         [Route("insertfichasbase")]
         public IHttpActionResult InsertFichasBase([FromUri] DataFichasBase dataFichasBase)
         {
-            return Json(ServiceAddConsolidateeCat.InsertFichaBase(
+            return Json(ServiceAdd.InsertFichaBase(
                 System.Configuration.ConfigurationManager.ConnectionStrings["Context"].ConnectionString,
                 dataFichasBase));
+        }
+
+        [Authorize]
+        [HttpGet]
+        [Route("insertcampana")]
+        public IHttpActionResult InsertCampana([FromUri] DataInsertTCampana dataInsertTCampana)
+        {
+            return Json(ServiceMasterMaintenance.InsertCampana(
+                System.Configuration.ConfigurationManager.ConnectionStrings["Context"].ConnectionString,
+                dataInsertTCampana));
+        }
+
+        //[Authorize]
+        [HttpGet]
+        [Route("getlog")]
+        public IHttpActionResult GetLog()
+        {
+            return Json(Util.GetLog());
         }
 
         #region Dispose       

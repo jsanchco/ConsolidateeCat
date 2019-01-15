@@ -19,6 +19,11 @@
 
         #region Consructor
 
+        public ResultStoreProcedure()
+        {
+
+        }
+
         public ResultStoreProcedure(MethodBase methodBase, string parameters)
         {
             Date = DateTime.Now;
@@ -36,8 +41,7 @@
         {
             return $"{Date:MM/dd/yyyy HH:mm:ss}\t{ClassName}\t{Method}\t{Parameters}\t{Status.ToString()}\t{Code}\t{Description}";
         }
-
     }
 
-    public enum Status { Pending, Ok, Error, Exception }
+    public enum Status { Pending = 0, Ok, Error, Exception }
 }

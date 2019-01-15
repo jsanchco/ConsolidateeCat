@@ -35,7 +35,7 @@
             return _repositoryTCampanas.Get_pa_TCampanas(dataCampana);
         }
 
-        public long pa_Insert_T_Campanas(DataInsertTCampana dataInsertTCampana)
+        public long? pa_Insert_T_Campanas(DataInsertTCampana dataInsertTCampana)
         {
             return _repositoryTCampanas.pa_Insert_T_Campanas(dataInsertTCampana);
         }

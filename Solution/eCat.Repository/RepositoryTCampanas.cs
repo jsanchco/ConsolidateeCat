@@ -1,4 +1,6 @@
 ﻿
+using System.Data;
+
 namespace eCat.Repository
 {
     #region Using
@@ -36,25 +38,31 @@ namespace eCat.Repository
             return result;
         }
 
-        public long pa_Insert_T_Campanas(DataInsertTCampana dataInsertTCampana)
+        public long? pa_Insert_T_Campanas(DataInsertTCampana dataInsertTCampana)
         {
             var resultStoreProcedure =
                 new ResultStoreProcedure(MethodBase.GetCurrentMethod(), dataInsertTCampana.ToUri());
 
             try
             {
+                var returnParam = new SqlParameter
+                {
+                    ParameterName = "@return",
+                    Direction = ParameterDirection.ReturnValue
+                };
+
                 Context.Database.SqlQuery<long>(
                     "exec dbo.[pa_Insert_T_Campañas] @nsDescripcion, @dtDesde, @dtHasta",
                     new SqlParameter("@nsDescripcion", dataInsertTCampana.Descripcion),
                     new SqlParameter("@dtDesde", dataInsertTCampana.Desde),
-                    new SqlParameter("@dtHasta", dataInsertTCampana.Hasta));
+                    new SqlParameter("@dtHasta", dataInsertTCampana.Hasta),
+                    returnParam);
 
-                const int code = 1;
-                resultStoreProcedure.Code = code;
+                resultStoreProcedure.Code = Convert.ToInt64(returnParam.Value);
 
-                resultStoreProcedure.Status = code == 1 ? Status.Ok : Status.Error;
+                resultStoreProcedure.Status = resultStoreProcedure.Code == 1 ? Status.Ok : Status.Error;
 
-                return code;
+                return resultStoreProcedure.Code;
             }
             catch (Exception e)
             {

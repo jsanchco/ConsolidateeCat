@@ -14,8 +14,8 @@
             return new DataInsertTCampana
             {
                 Descripcion = "2022",
-                Desde = new DateTime(2021, 1, 1),
-                Hasta = new DateTime(2021, 12, 31)
+                Desde = new DateTime(2022, 1, 1),
+                Hasta = new DateTime(2022, 12, 31)
             };
         }
     }
