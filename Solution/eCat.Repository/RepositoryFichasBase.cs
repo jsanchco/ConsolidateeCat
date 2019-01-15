@@ -50,6 +50,7 @@ namespace eCat.Repository
                     .Include(x => x.TFichasBaseAmbitosCesions.Select(y => y.TFichasBaseAmbitosCesionValores))
                     .Include(x => x.TFichasBaseAmbitosCesions.Select(y => y.TFichasBaseAmbitosCesionRestricciones))
                     .Include(x => x.Documentoes)
+                    .Include(x => x.TbFichasBaseImagenes)
                     .Where(x => x.IdPais == idPais);
 
                 if (originalProducts)
@@ -82,6 +83,7 @@ namespace eCat.Repository
                 .Include(x => x.TFichasBaseAmbitosCesions.Select(y => y.TFichasBaseAmbitosCesionRestricciones))
                 .Include(x => x.TFichasBaseAmbitosCesions)
                 .Include(x => x.Documentoes)
+                .Include(x => x.TbFichasBaseImagenes)
                 .Where(x => x.IdPais == idPais && x.Baja == false);
 
             if (originalProducts)
@@ -119,6 +121,7 @@ namespace eCat.Repository
                     .Include(x => x.TFichasBaseAmbitosCesions.Select(y => y.TFichasBaseAmbitosCesionValores))
                     .Include(x => x.TFichasBaseAmbitosCesions.Select(y => y.TFichasBaseAmbitosCesionRestricciones))
                     .Include(x => x.Documentoes)
+                    .Include(x => x.TbFichasBaseImagenes)
                     .Where(x => x.IdPais == idPais);
 
                 if (originalProducts)
@@ -151,6 +154,7 @@ namespace eCat.Repository
                 .Include(x => x.TFichasBaseAmbitosCesions.Select(y => y.TFichasBaseAmbitosCesionRestricciones))
                 .Include(x => x.TFichasBaseAmbitosCesions)
                 .Include(x => x.Documentoes)
+                .Include(x => x.TbFichasBaseImagenes)
                 .Where(x => x.IdPais == idPais && x.Baja == false);
 
             if (originalProducts)

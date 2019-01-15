@@ -7,6 +7,7 @@ namespace eCat.TestConsole
     using System.Threading.Tasks;
     using Data.Parameters;
     using TestData;
+    using Data.VMEntities;
 
     #endregion
 

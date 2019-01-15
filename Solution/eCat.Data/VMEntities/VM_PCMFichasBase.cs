@@ -1,4 +1,7 @@
 ﻿// ReSharper disable InconsistentNaming
+
+using System.Collections.Generic;
+
 namespace eCat.Data.VMEntities
 {
     #region Using
@@ -99,6 +102,7 @@ namespace eCat.Data.VMEntities
         public string MaterialesReferencia { get; set; }
         public string MaterialesAuxiliares { get; set; }
         public string MaterialesAuxiliaresTipoDeDocumento { get; set; }
+        public string PathMaterialesAuxiliares { get; set; }
         public string FechaContrato { get; set; }
         public string EstadoContrato { get; set; }
         public string TerritoriosVenta { get; set; }
@@ -111,8 +115,11 @@ namespace eCat.Data.VMEntities
         public string ImagenCubierta { get; set; }
         public string TiposDeImagenes { get; set; }
         public string Visores { get; set; }
-
         public int? MarcaPublicado { get; set; }
+        public string PortadasBajaResolucion { get; set; }
+        public string AltaResolucion { get; set; }
+        public string Interiores { get; set; }
+        public string Bodegones { get; set; }
 
         public VM_PCMFichasBase(FichasBase fichasBase)
         {
@@ -400,11 +407,22 @@ namespace eCat.Data.VMEntities
             {
                 MaterialesAuxiliares += $"{item.IdDocumento},";
                 MaterialesAuxiliaresTipoDeDocumento += $"{item.Tipo},";
+
+                if (item.TipoLink == false)
+                {
+                    PathMaterialesAuxiliares += $"\\\\sesficazu02.gesm.net\\ecatprepro$\\Documentos_Materiales{item.Path},";
+                }
+                else
+                {
+                    PathMaterialesAuxiliares += $"{item.Path},";
+                }
             }
             if (!string.IsNullOrEmpty(MaterialesAuxiliares))
                 MaterialesAuxiliares = MaterialesAuxiliares.Substring(0, MaterialesAuxiliares.Length - 1);
             if (!string.IsNullOrEmpty(MaterialesAuxiliaresTipoDeDocumento))
                 MaterialesAuxiliaresTipoDeDocumento = MaterialesAuxiliaresTipoDeDocumento.Substring(0, MaterialesAuxiliaresTipoDeDocumento.Length - 1);
+            if (!string.IsNullOrEmpty(PathMaterialesAuxiliares))
+                PathMaterialesAuxiliares = PathMaterialesAuxiliares.Substring(0, PathMaterialesAuxiliares.Length - 1);
 
             // FechaContrato
             // EstadoContrato
@@ -457,6 +475,31 @@ namespace eCat.Data.VMEntities
 
             // MarcaPublicado
             MarcaPublicado = fichasBase.PublicableWeb;
+
+            // Imagenes
+            foreach (var item in fichasBase.TbFichasBaseImagenes)
+            {
+                // PortadasBajaResolucion
+                if (item.IdTipoImagen == 1)
+                    PortadasBajaResolucion += $"{item.Fichero},";
+                // AltaResolucion
+                if (item.IdTipoImagen == 2)
+                   AltaResolucion += $"{item.Fichero},";
+                // Interiores
+                if (item.IdTipoImagen == 3)
+                    Interiores += $"{item.Fichero},";
+                // Bodegones
+                if (item.IdTipoImagen == 5)
+                    Bodegones += $"{item.Fichero},";
+            }
+            if (!string.IsNullOrEmpty(PortadasBajaResolucion))
+                PortadasBajaResolucion = PortadasBajaResolucion.Substring(0, PortadasBajaResolucion.Length - 1);
+            if (!string.IsNullOrEmpty(AltaResolucion))
+                AltaResolucion = AltaResolucion.Substring(0, AltaResolucion.Length - 1);
+            if (!string.IsNullOrEmpty(Interiores))
+                Interiores = Interiores.Substring(0, Interiores.Length - 1);
+            if (!string.IsNullOrEmpty(Bodegones))
+                Bodegones = Bodegones.Substring(0, Bodegones.Length - 1);
         }
 
         private string FormatText(string text)
@@ -565,6 +608,7 @@ namespace eCat.Data.VMEntities
             lineCSV += $"{MaterialesReferencia};";
             lineCSV += $"{MaterialesAuxiliares};";
             lineCSV += $"{MaterialesAuxiliaresTipoDeDocumento};";
+            lineCSV += $"{PathMaterialesAuxiliares};";
             lineCSV += $"{FechaContrato};";
             lineCSV += $"{EstadoContrato};";
             lineCSV += $"{TerritoriosVenta};";
@@ -578,8 +622,34 @@ namespace eCat.Data.VMEntities
             lineCSV += $"{TiposDeImagenes};";
             lineCSV += $"{Visores};";
             lineCSV += $"{MarcaPublicado};";
+            lineCSV += $"{PortadasBajaResolucion};";
+            lineCSV += $"{AltaResolucion};";
+            lineCSV += $"{Interiores};";
+            lineCSV += $"{Bodegones};";
 
             return lineCSV;
+        }
+
+        public List<string> MethodsList()
+        {
+            var exclueFields = new List<string> { "ToString", "Equals", "GetHashCode", "GetType", "ToCSV", "MethodsList" };
+
+            var returnList = new List<string>();
+            var type = GetType();
+            var methodInfos = type.GetMethods();
+            foreach (var method in methodInfos)
+            {
+                if (method.IsConstructor || exclueFields.Contains(method.Name))
+                    continue;
+
+                var field = method.Name.Replace("get_", string.Empty).Replace("set_", string.Empty);
+                if (returnList.Contains(field))
+                    continue;
+
+                returnList.Add(field);
+            }
+
+            return returnList;
         }
     }
 }
